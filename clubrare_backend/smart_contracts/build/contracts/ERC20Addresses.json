@@ -1,0 +1,4205 @@
+{
+  "contractName": "ERC20Addresses",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/brokerV2_utils/ERC20Addresses.sol\":\"ERC20Addresses\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/brokerV2_utils/ERC20Addresses.sol\":{\"keccak256\":\"0x68d7a2b15e4aeb0d4ed5394d6e0a5f3b89bc680e036caf77c12f496d8a2f62f7\",\"urls\":[\"bzz-raw://a2eb4d70c0ea51ad88645e0ddded320682890b1d100df7d52be90d61777ba05a\",\"dweb:/ipfs/QmYav22Ac5wvrW22FSEE6sEZq6vSpmB76JzRFw6zFMB86R\"]}},\"version\":1}",
+  "bytecode": "0x60d8610025600b82828239805160001a60731461001857fe5b30600052607381538281f3fe730000000000000000000000000000000000000000301460806040526004361060335760003560e01c8063581455e9146038575b600080fd5b818015604357600080fd5b50606d60048036036040811015605857600080fd5b50803590602001356001600160a01b0316606f565b005b81546001810183556000928352602090922090910180546001600160a01b0319166001600160a01b0390921691909117905556fea265627a7a7231582038189f5bef0e201fcd5e0634605fd05ee803d30322f6835941ec4a931923696164736f6c63430005110032",
+  "deployedBytecode": "0x730000000000000000000000000000000000000000301460806040526004361060335760003560e01c8063581455e9146038575b600080fd5b818015604357600080fd5b50606d60048036036040811015605857600080fd5b50803590602001356001600160a01b0316606f565b005b81546001810183556000928352602090922090910180546001600160a01b0319166001600160a01b0390921691909117905556fea265627a7a7231582038189f5bef0e201fcd5e0634605fd05ee803d30322f6835941ec4a931923696164736f6c63430005110032",
+  "sourceMap": "61:1568:26:-;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
+  "deployedSourceMap": "61:1568:26:-;;;;;;;;;;;;;;;;;;;;;;;;196:142;;8:9:-1;5:2;;;30:1;27;20:12;5:2;196:142:26;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;196:142:26;;;;;;-1:-1:-1;;;;;196:142:26;;:::i;:::-;;;27:10:-1;;39:1;23:18;;45:23;;-1:-1;302:29:26;;;;;;;;;;;;-1:-1:-1;;;;;;302:29:26;-1:-1:-1;;;;;302:29:26;;;;;;;;;196:142::o",
+  "source": "pragma solidity ^0.5.17;\n\n// library for erc20address array \nlibrary ERC20Addresses {\n    using ERC20Addresses for erc20Addresses;\n\n    struct erc20Addresses {\n        address[] array;\n    }\n\n    function addERC20Tokens(erc20Addresses storage self, address erc20address)\n        external\n    {\n        self.array.push(erc20address);\n    }\n\n    function getIndexByERC20Token(\n        erc20Addresses storage self,\n        address _ercTokenAddress\n    ) internal view returns (uint256, bool) {\n        uint256 index;\n        bool exists;\n\n        for (uint256 i = 0; i < self.array.length; i++) {\n            if (self.array[i] == _ercTokenAddress) {\n                index = i;\n                exists = true;\n\n                break;\n            }\n        }\n        return (index, exists);\n    }\n\n    function removeERC20Token(\n        erc20Addresses storage self,\n        address _ercTokenAddress\n    ) internal {\n        if (self.array.length > 1){\n            for (uint256 i = 0; i < self.array.length; i++) {\n                    if (\n                        self.array[i] == _ercTokenAddress \n                    ) {\n                        delete self.array[i];\n                    }\n                }\n        }\n        else{\n            self.array.length = 0;\n        }\n    }\n    function exists(\n        erc20Addresses storage self,\n        address _ercTokenAddress\n    ) internal view returns (bool) {\n        for (uint256 i = 0; i < self.array.length; i++) {\n            if (\n                self.array[i] == _ercTokenAddress \n            ) {\n                return true;\n            }\n        }\n        return false;\n    }\n}\n",
+  "sourcePath": "/Users/thoughtwin/Desktop/weblisto/clubrare/smart_contracts/contracts/brokerV2_utils/ERC20Addresses.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/brokerV2_utils/ERC20Addresses.sol",
+    "exportedSymbols": {
+      "ERC20Addresses": [
+        7206
+      ]
+    },
+    "id": 7207,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7041,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".17"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:26"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 7206,
+        "linearizedBaseContracts": [
+          7206
+        ],
+        "name": "ERC20Addresses",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 7044,
+            "libraryName": {
+              "contractScope": null,
+              "id": 7042,
+              "name": "ERC20Addresses",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 7206,
+              "src": "96:14:26",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ERC20Addresses_$7206",
+                "typeString": "library ERC20Addresses"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "90:40:26",
+            "typeName": {
+              "contractScope": null,
+              "id": 7043,
+              "name": "erc20Addresses",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 7048,
+              "src": "115:14:26",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                "typeString": "struct ERC20Addresses.erc20Addresses"
+              }
+            }
+          },
+          {
+            "canonicalName": "ERC20Addresses.erc20Addresses",
+            "id": 7048,
+            "members": [
+              {
+                "constant": false,
+                "id": 7047,
+                "name": "array",
+                "nodeType": "VariableDeclaration",
+                "scope": 7048,
+                "src": "168:15:26",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                  "typeString": "address[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 7045,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "168:7:26",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 7046,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "168:9:26",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                    "typeString": "address[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "erc20Addresses",
+            "nodeType": "StructDefinition",
+            "scope": 7206,
+            "src": "136:54:26",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 7063,
+              "nodeType": "Block",
+              "src": "292:46:26",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 7060,
+                        "name": "erc20address",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7052,
+                        "src": "318:12:26",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 7055,
+                          "name": "self",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 7050,
+                          "src": "302:4:26",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                            "typeString": "struct ERC20Addresses.erc20Addresses storage pointer"
+                          }
+                        },
+                        "id": 7058,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "array",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 7047,
+                        "src": "302:10:26",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 7059,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "302:15:26",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_address_$returns$_t_uint256_$",
+                        "typeString": "function (address) returns (uint256)"
+                      }
+                    },
+                    "id": 7061,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "302:29:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 7062,
+                  "nodeType": "ExpressionStatement",
+                  "src": "302:29:26"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 7064,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addERC20Tokens",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7053,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7050,
+                  "name": "self",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7064,
+                  "src": "220:27:26",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                    "typeString": "struct ERC20Addresses.erc20Addresses"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7049,
+                    "name": "erc20Addresses",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7048,
+                    "src": "220:14:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                      "typeString": "struct ERC20Addresses.erc20Addresses"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7052,
+                  "name": "erc20address",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7064,
+                  "src": "249:20:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7051,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "249:7:26",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "219:51:26"
+            },
+            "returnParameters": {
+              "id": 7054,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "292:0:26"
+            },
+            "scope": 7206,
+            "src": "196:142:26",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 7116,
+              "nodeType": "Block",
+              "src": "489:301:26",
+              "statements": [
+                {
+                  "assignments": [
+                    7076
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 7076,
+                      "name": "index",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 7116,
+                      "src": "499:13:26",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 7075,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "499:7:26",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 7077,
+                  "initialValue": null,
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "499:13:26"
+                },
+                {
+                  "assignments": [
+                    7079
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 7079,
+                      "name": "exists",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 7116,
+                      "src": "522:11:26",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "typeName": {
+                        "id": 7078,
+                        "name": "bool",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "522:4:26",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 7080,
+                  "initialValue": null,
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "522:11:26"
+                },
+                {
+                  "body": {
+                    "id": 7110,
+                    "nodeType": "Block",
+                    "src": "592:160:26",
+                    "statements": [
+                      {
+                        "condition": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "id": 7098,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "argumentTypes": null,
+                            "baseExpression": {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 7093,
+                                "name": "self",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 7066,
+                                "src": "610:4:26",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                                  "typeString": "struct ERC20Addresses.erc20Addresses storage pointer"
+                                }
+                              },
+                              "id": 7094,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "array",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 7047,
+                              "src": "610:10:26",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                "typeString": "address[] storage ref"
+                              }
+                            },
+                            "id": 7096,
+                            "indexExpression": {
+                              "argumentTypes": null,
+                              "id": 7095,
+                              "name": "i",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 7082,
+                              "src": "621:1:26",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "610:13:26",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "==",
+                          "rightExpression": {
+                            "argumentTypes": null,
+                            "id": 7097,
+                            "name": "_ercTokenAddress",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 7068,
+                            "src": "627:16:26",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "src": "610:33:26",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "falseBody": null,
+                        "id": 7109,
+                        "nodeType": "IfStatement",
+                        "src": "606:136:26",
+                        "trueBody": {
+                          "id": 7108,
+                          "nodeType": "Block",
+                          "src": "645:97:26",
+                          "statements": [
+                            {
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 7101,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftHandSide": {
+                                  "argumentTypes": null,
+                                  "id": 7099,
+                                  "name": "index",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 7076,
+                                  "src": "663:5:26",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "nodeType": "Assignment",
+                                "operator": "=",
+                                "rightHandSide": {
+                                  "argumentTypes": null,
+                                  "id": 7100,
+                                  "name": "i",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 7082,
+                                  "src": "671:1:26",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "src": "663:9:26",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "id": 7102,
+                              "nodeType": "ExpressionStatement",
+                              "src": "663:9:26"
+                            },
+                            {
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 7105,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftHandSide": {
+                                  "argumentTypes": null,
+                                  "id": 7103,
+                                  "name": "exists",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 7079,
+                                  "src": "690:6:26",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_bool",
+                                    "typeString": "bool"
+                                  }
+                                },
+                                "nodeType": "Assignment",
+                                "operator": "=",
+                                "rightHandSide": {
+                                  "argumentTypes": null,
+                                  "hexValue": "74727565",
+                                  "id": 7104,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "bool",
+                                  "lValueRequested": false,
+                                  "nodeType": "Literal",
+                                  "src": "699:4:26",
+                                  "subdenomination": null,
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_bool",
+                                    "typeString": "bool"
+                                  },
+                                  "value": "true"
+                                },
+                                "src": "690:13:26",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              },
+                              "id": 7106,
+                              "nodeType": "ExpressionStatement",
+                              "src": "690:13:26"
+                            },
+                            {
+                              "id": 7107,
+                              "nodeType": "Break",
+                              "src": "722:5:26"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 7089,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 7085,
+                      "name": "i",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7082,
+                      "src": "564:1:26",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 7086,
+                          "name": "self",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 7066,
+                          "src": "568:4:26",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                            "typeString": "struct ERC20Addresses.erc20Addresses storage pointer"
+                          }
+                        },
+                        "id": 7087,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "array",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 7047,
+                        "src": "568:10:26",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 7088,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "568:17:26",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "564:21:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 7111,
+                  "initializationExpression": {
+                    "assignments": [
+                      7082
+                    ],
+                    "declarations": [
+                      {
+                        "constant": false,
+                        "id": 7082,
+                        "name": "i",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 7111,
+                        "src": "549:9:26",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 7081,
+                          "name": "uint256",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "549:7:26",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "value": null,
+                        "visibility": "internal"
+                      }
+                    ],
+                    "id": 7084,
+                    "initialValue": {
+                      "argumentTypes": null,
+                      "hexValue": "30",
+                      "id": 7083,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "561:1:26",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "nodeType": "VariableDeclarationStatement",
+                    "src": "549:13:26"
+                  },
+                  "loopExpression": {
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 7091,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "++",
+                      "prefix": false,
+                      "src": "587:3:26",
+                      "subExpression": {
+                        "argumentTypes": null,
+                        "id": 7090,
+                        "name": "i",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7082,
+                        "src": "587:1:26",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 7092,
+                    "nodeType": "ExpressionStatement",
+                    "src": "587:3:26"
+                  },
+                  "nodeType": "ForStatement",
+                  "src": "544:208:26"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "id": 7112,
+                        "name": "index",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7076,
+                        "src": "769:5:26",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 7113,
+                        "name": "exists",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7079,
+                        "src": "776:6:26",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "id": 7114,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "768:15:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_uint256_$_t_bool_$",
+                      "typeString": "tuple(uint256,bool)"
+                    }
+                  },
+                  "functionReturnParameters": 7074,
+                  "id": 7115,
+                  "nodeType": "Return",
+                  "src": "761:22:26"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 7117,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getIndexByERC20Token",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7069,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7066,
+                  "name": "self",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7117,
+                  "src": "383:27:26",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                    "typeString": "struct ERC20Addresses.erc20Addresses"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7065,
+                    "name": "erc20Addresses",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7048,
+                    "src": "383:14:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                      "typeString": "struct ERC20Addresses.erc20Addresses"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7068,
+                  "name": "_ercTokenAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7117,
+                  "src": "420:24:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7067,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "420:7:26",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "373:77:26"
+            },
+            "returnParameters": {
+              "id": 7074,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7071,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7117,
+                  "src": "474:7:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7070,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "474:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7073,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7117,
+                  "src": "483:4:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 7072,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "483:4:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "473:15:26"
+            },
+            "scope": 7206,
+            "src": "344:446:26",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 7168,
+              "nodeType": "Block",
+              "src": "908:368:26",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 7128,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 7124,
+                          "name": "self",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 7119,
+                          "src": "922:4:26",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                            "typeString": "struct ERC20Addresses.erc20Addresses storage pointer"
+                          }
+                        },
+                        "id": 7125,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "array",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 7047,
+                        "src": "922:10:26",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 7126,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "922:17:26",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": ">",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "hexValue": "31",
+                      "id": 7127,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "942:1:26",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_1_by_1",
+                        "typeString": "int_const 1"
+                      },
+                      "value": "1"
+                    },
+                    "src": "922:21:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 7166,
+                    "nodeType": "Block",
+                    "src": "1224:46:26",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 7164,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 7158,
+                                "name": "self",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 7119,
+                                "src": "1238:4:26",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                                  "typeString": "struct ERC20Addresses.erc20Addresses storage pointer"
+                                }
+                              },
+                              "id": 7161,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "array",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 7047,
+                              "src": "1238:10:26",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                "typeString": "address[] storage ref"
+                              }
+                            },
+                            "id": 7162,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "length",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "1238:17:26",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "hexValue": "30",
+                            "id": 7163,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "1258:1:26",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_0_by_1",
+                              "typeString": "int_const 0"
+                            },
+                            "value": "0"
+                          },
+                          "src": "1238:21:26",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 7165,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1238:21:26"
+                      }
+                    ]
+                  },
+                  "id": 7167,
+                  "nodeType": "IfStatement",
+                  "src": "918:352:26",
+                  "trueBody": {
+                    "id": 7157,
+                    "nodeType": "Block",
+                    "src": "944:267:26",
+                    "statements": [
+                      {
+                        "body": {
+                          "id": 7155,
+                          "nodeType": "Block",
+                          "src": "1006:195:26",
+                          "statements": [
+                            {
+                              "condition": {
+                                "argumentTypes": null,
+                                "commonType": {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                "id": 7146,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftExpression": {
+                                  "argumentTypes": null,
+                                  "baseExpression": {
+                                    "argumentTypes": null,
+                                    "expression": {
+                                      "argumentTypes": null,
+                                      "id": 7141,
+                                      "name": "self",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 7119,
+                                      "src": "1057:4:26",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                                        "typeString": "struct ERC20Addresses.erc20Addresses storage pointer"
+                                      }
+                                    },
+                                    "id": 7142,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "array",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 7047,
+                                    "src": "1057:10:26",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                      "typeString": "address[] storage ref"
+                                    }
+                                  },
+                                  "id": 7144,
+                                  "indexExpression": {
+                                    "argumentTypes": null,
+                                    "id": 7143,
+                                    "name": "i",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 7130,
+                                    "src": "1068:1:26",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "nodeType": "IndexAccess",
+                                  "src": "1057:13:26",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                },
+                                "nodeType": "BinaryOperation",
+                                "operator": "==",
+                                "rightExpression": {
+                                  "argumentTypes": null,
+                                  "id": 7145,
+                                  "name": "_ercTokenAddress",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 7121,
+                                  "src": "1074:16:26",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                },
+                                "src": "1057:33:26",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              },
+                              "falseBody": null,
+                              "id": 7154,
+                              "nodeType": "IfStatement",
+                              "src": "1028:155:26",
+                              "trueBody": {
+                                "id": 7153,
+                                "nodeType": "Block",
+                                "src": "1114:69:26",
+                                "statements": [
+                                  {
+                                    "expression": {
+                                      "argumentTypes": null,
+                                      "id": 7151,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "nodeType": "UnaryOperation",
+                                      "operator": "delete",
+                                      "prefix": true,
+                                      "src": "1140:20:26",
+                                      "subExpression": {
+                                        "argumentTypes": null,
+                                        "baseExpression": {
+                                          "argumentTypes": null,
+                                          "expression": {
+                                            "argumentTypes": null,
+                                            "id": 7147,
+                                            "name": "self",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 7119,
+                                            "src": "1147:4:26",
+                                            "typeDescriptions": {
+                                              "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                                              "typeString": "struct ERC20Addresses.erc20Addresses storage pointer"
+                                            }
+                                          },
+                                          "id": 7148,
+                                          "isConstant": false,
+                                          "isLValue": true,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "memberName": "array",
+                                          "nodeType": "MemberAccess",
+                                          "referencedDeclaration": 7047,
+                                          "src": "1147:10:26",
+                                          "typeDescriptions": {
+                                            "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                            "typeString": "address[] storage ref"
+                                          }
+                                        },
+                                        "id": 7150,
+                                        "indexExpression": {
+                                          "argumentTypes": null,
+                                          "id": 7149,
+                                          "name": "i",
+                                          "nodeType": "Identifier",
+                                          "overloadedDeclarations": [],
+                                          "referencedDeclaration": 7130,
+                                          "src": "1158:1:26",
+                                          "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                          }
+                                        },
+                                        "isConstant": false,
+                                        "isLValue": true,
+                                        "isPure": false,
+                                        "lValueRequested": true,
+                                        "nodeType": "IndexAccess",
+                                        "src": "1147:13:26",
+                                        "typeDescriptions": {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        }
+                                      },
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_tuple$__$",
+                                        "typeString": "tuple()"
+                                      }
+                                    },
+                                    "id": 7152,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1140:20:26"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "condition": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "id": 7137,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "argumentTypes": null,
+                            "id": 7133,
+                            "name": "i",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 7130,
+                            "src": "978:1:26",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "<",
+                          "rightExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 7134,
+                                "name": "self",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 7119,
+                                "src": "982:4:26",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                                  "typeString": "struct ERC20Addresses.erc20Addresses storage pointer"
+                                }
+                              },
+                              "id": 7135,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "array",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 7047,
+                              "src": "982:10:26",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                "typeString": "address[] storage ref"
+                              }
+                            },
+                            "id": 7136,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "length",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "982:17:26",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "src": "978:21:26",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "id": 7156,
+                        "initializationExpression": {
+                          "assignments": [
+                            7130
+                          ],
+                          "declarations": [
+                            {
+                              "constant": false,
+                              "id": 7130,
+                              "name": "i",
+                              "nodeType": "VariableDeclaration",
+                              "scope": 7156,
+                              "src": "963:9:26",
+                              "stateVariable": false,
+                              "storageLocation": "default",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "typeName": {
+                                "id": 7129,
+                                "name": "uint256",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "963:7:26",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "value": null,
+                              "visibility": "internal"
+                            }
+                          ],
+                          "id": 7132,
+                          "initialValue": {
+                            "argumentTypes": null,
+                            "hexValue": "30",
+                            "id": 7131,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "975:1:26",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_0_by_1",
+                              "typeString": "int_const 0"
+                            },
+                            "value": "0"
+                          },
+                          "nodeType": "VariableDeclarationStatement",
+                          "src": "963:13:26"
+                        },
+                        "loopExpression": {
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 7139,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "UnaryOperation",
+                            "operator": "++",
+                            "prefix": false,
+                            "src": "1001:3:26",
+                            "subExpression": {
+                              "argumentTypes": null,
+                              "id": 7138,
+                              "name": "i",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 7130,
+                              "src": "1001:1:26",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "id": 7140,
+                          "nodeType": "ExpressionStatement",
+                          "src": "1001:3:26"
+                        },
+                        "nodeType": "ForStatement",
+                        "src": "958:243:26"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 7169,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "removeERC20Token",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7122,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7119,
+                  "name": "self",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7169,
+                  "src": "831:27:26",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                    "typeString": "struct ERC20Addresses.erc20Addresses"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7118,
+                    "name": "erc20Addresses",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7048,
+                    "src": "831:14:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                      "typeString": "struct ERC20Addresses.erc20Addresses"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7121,
+                  "name": "_ercTokenAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7169,
+                  "src": "868:24:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7120,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "868:7:26",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "821:77:26"
+            },
+            "returnParameters": {
+              "id": 7123,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "908:0:26"
+            },
+            "scope": 7206,
+            "src": "796:480:26",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 7204,
+              "nodeType": "Block",
+              "src": "1403:224:26",
+              "statements": [
+                {
+                  "body": {
+                    "id": 7200,
+                    "nodeType": "Block",
+                    "src": "1461:138:26",
+                    "statements": [
+                      {
+                        "condition": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "id": 7195,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "argumentTypes": null,
+                            "baseExpression": {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 7190,
+                                "name": "self",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 7171,
+                                "src": "1496:4:26",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                                  "typeString": "struct ERC20Addresses.erc20Addresses storage pointer"
+                                }
+                              },
+                              "id": 7191,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "array",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 7047,
+                              "src": "1496:10:26",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                "typeString": "address[] storage ref"
+                              }
+                            },
+                            "id": 7193,
+                            "indexExpression": {
+                              "argumentTypes": null,
+                              "id": 7192,
+                              "name": "i",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 7179,
+                              "src": "1507:1:26",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "1496:13:26",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "==",
+                          "rightExpression": {
+                            "argumentTypes": null,
+                            "id": 7194,
+                            "name": "_ercTokenAddress",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 7173,
+                            "src": "1513:16:26",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "src": "1496:33:26",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "falseBody": null,
+                        "id": 7199,
+                        "nodeType": "IfStatement",
+                        "src": "1475:114:26",
+                        "trueBody": {
+                          "id": 7198,
+                          "nodeType": "Block",
+                          "src": "1545:44:26",
+                          "statements": [
+                            {
+                              "expression": {
+                                "argumentTypes": null,
+                                "hexValue": "74727565",
+                                "id": 7196,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "bool",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "1570:4:26",
+                                "subdenomination": null,
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                },
+                                "value": "true"
+                              },
+                              "functionReturnParameters": 7177,
+                              "id": 7197,
+                              "nodeType": "Return",
+                              "src": "1563:11:26"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 7186,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 7182,
+                      "name": "i",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7179,
+                      "src": "1433:1:26",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 7183,
+                          "name": "self",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 7171,
+                          "src": "1437:4:26",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                            "typeString": "struct ERC20Addresses.erc20Addresses storage pointer"
+                          }
+                        },
+                        "id": 7184,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "array",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 7047,
+                        "src": "1437:10:26",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 7185,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "1437:17:26",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1433:21:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 7201,
+                  "initializationExpression": {
+                    "assignments": [
+                      7179
+                    ],
+                    "declarations": [
+                      {
+                        "constant": false,
+                        "id": 7179,
+                        "name": "i",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 7201,
+                        "src": "1418:9:26",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 7178,
+                          "name": "uint256",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1418:7:26",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "value": null,
+                        "visibility": "internal"
+                      }
+                    ],
+                    "id": 7181,
+                    "initialValue": {
+                      "argumentTypes": null,
+                      "hexValue": "30",
+                      "id": 7180,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1430:1:26",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "nodeType": "VariableDeclarationStatement",
+                    "src": "1418:13:26"
+                  },
+                  "loopExpression": {
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 7188,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "++",
+                      "prefix": false,
+                      "src": "1456:3:26",
+                      "subExpression": {
+                        "argumentTypes": null,
+                        "id": 7187,
+                        "name": "i",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7179,
+                        "src": "1456:1:26",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 7189,
+                    "nodeType": "ExpressionStatement",
+                    "src": "1456:3:26"
+                  },
+                  "nodeType": "ForStatement",
+                  "src": "1413:186:26"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "66616c7365",
+                    "id": 7202,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "1615:5:26",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "false"
+                  },
+                  "functionReturnParameters": 7177,
+                  "id": 7203,
+                  "nodeType": "Return",
+                  "src": "1608:12:26"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 7205,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "exists",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7174,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7171,
+                  "name": "self",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7205,
+                  "src": "1306:27:26",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                    "typeString": "struct ERC20Addresses.erc20Addresses"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7170,
+                    "name": "erc20Addresses",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7048,
+                    "src": "1306:14:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_erc20Addresses_$7048_storage_ptr",
+                      "typeString": "struct ERC20Addresses.erc20Addresses"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7173,
+                  "name": "_ercTokenAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7205,
+                  "src": "1343:24:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7172,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1343:7:26",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1296:77:26"
+            },
+            "returnParameters": {
+              "id": 7177,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7176,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7205,
+                  "src": "1397:4:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 7175,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1397:4:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1396:6:26"
+            },
+            "scope": 7206,
+            "src": "1281:346:26",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 7207,
+        "src": "61:1568:26"
+      }
+    ],
+    "src": "0:1630:26"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/brokerV2_utils/ERC20Addresses.sol",
+      "exportedSymbols": {
+        "ERC20Addresses": [
+          7206
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.5",
+            ".17"
+          ]
+        },
+        "id": 7041,
+        "name": "PragmaDirective",
+        "src": "0:24:26"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "library",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            7206
+          ],
+          "name": "ERC20Addresses",
+          "scope": 7207
+        },
+        "children": [
+          {
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "ERC20Addresses",
+                  "referencedDeclaration": 7206,
+                  "type": "library ERC20Addresses"
+                },
+                "id": 7042,
+                "name": "UserDefinedTypeName",
+                "src": "96:14:26"
+              },
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "erc20Addresses",
+                  "referencedDeclaration": 7048,
+                  "type": "struct ERC20Addresses.erc20Addresses"
+                },
+                "id": 7043,
+                "name": "UserDefinedTypeName",
+                "src": "115:14:26"
+              }
+            ],
+            "id": 7044,
+            "name": "UsingForDirective",
+            "src": "90:40:26"
+          },
+          {
+            "attributes": {
+              "canonicalName": "ERC20Addresses.erc20Addresses",
+              "name": "erc20Addresses",
+              "scope": 7206,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "array",
+                  "scope": 7048,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address[]",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "length": null,
+                      "type": "address[]"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 7045,
+                        "name": "ElementaryTypeName",
+                        "src": "168:7:26"
+                      }
+                    ],
+                    "id": 7046,
+                    "name": "ArrayTypeName",
+                    "src": "168:9:26"
+                  }
+                ],
+                "id": 7047,
+                "name": "VariableDeclaration",
+                "src": "168:15:26"
+              }
+            ],
+            "id": 7048,
+            "name": "StructDefinition",
+            "src": "136:54:26"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "addERC20Tokens",
+              "scope": 7206,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "self",
+                      "scope": 7064,
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "type": "struct ERC20Addresses.erc20Addresses",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "erc20Addresses",
+                          "referencedDeclaration": 7048,
+                          "type": "struct ERC20Addresses.erc20Addresses"
+                        },
+                        "id": 7049,
+                        "name": "UserDefinedTypeName",
+                        "src": "220:14:26"
+                      }
+                    ],
+                    "id": 7050,
+                    "name": "VariableDeclaration",
+                    "src": "220:27:26"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "erc20address",
+                      "scope": 7064,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 7051,
+                        "name": "ElementaryTypeName",
+                        "src": "249:7:26"
+                      }
+                    ],
+                    "id": 7052,
+                    "name": "VariableDeclaration",
+                    "src": "249:20:26"
+                  }
+                ],
+                "id": 7053,
+                "name": "ParameterList",
+                "src": "219:51:26"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 7054,
+                "name": "ParameterList",
+                "src": "292:0:26"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "uint256",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "push",
+                              "referencedDeclaration": null,
+                              "type": "function (address) returns (uint256)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "array",
+                                  "referencedDeclaration": 7047,
+                                  "type": "address[] storage ref"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 7050,
+                                      "type": "struct ERC20Addresses.erc20Addresses storage pointer",
+                                      "value": "self"
+                                    },
+                                    "id": 7055,
+                                    "name": "Identifier",
+                                    "src": "302:4:26"
+                                  }
+                                ],
+                                "id": 7058,
+                                "name": "MemberAccess",
+                                "src": "302:10:26"
+                              }
+                            ],
+                            "id": 7059,
+                            "name": "MemberAccess",
+                            "src": "302:15:26"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 7052,
+                              "type": "address",
+                              "value": "erc20address"
+                            },
+                            "id": 7060,
+                            "name": "Identifier",
+                            "src": "318:12:26"
+                          }
+                        ],
+                        "id": 7061,
+                        "name": "FunctionCall",
+                        "src": "302:29:26"
+                      }
+                    ],
+                    "id": 7062,
+                    "name": "ExpressionStatement",
+                    "src": "302:29:26"
+                  }
+                ],
+                "id": 7063,
+                "name": "Block",
+                "src": "292:46:26"
+              }
+            ],
+            "id": 7064,
+            "name": "FunctionDefinition",
+            "src": "196:142:26"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getIndexByERC20Token",
+              "scope": 7206,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "self",
+                      "scope": 7117,
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "type": "struct ERC20Addresses.erc20Addresses",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "erc20Addresses",
+                          "referencedDeclaration": 7048,
+                          "type": "struct ERC20Addresses.erc20Addresses"
+                        },
+                        "id": 7065,
+                        "name": "UserDefinedTypeName",
+                        "src": "383:14:26"
+                      }
+                    ],
+                    "id": 7066,
+                    "name": "VariableDeclaration",
+                    "src": "383:27:26"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_ercTokenAddress",
+                      "scope": 7117,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 7067,
+                        "name": "ElementaryTypeName",
+                        "src": "420:7:26"
+                      }
+                    ],
+                    "id": 7068,
+                    "name": "VariableDeclaration",
+                    "src": "420:24:26"
+                  }
+                ],
+                "id": 7069,
+                "name": "ParameterList",
+                "src": "373:77:26"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 7117,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 7070,
+                        "name": "ElementaryTypeName",
+                        "src": "474:7:26"
+                      }
+                    ],
+                    "id": 7071,
+                    "name": "VariableDeclaration",
+                    "src": "474:7:26"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 7117,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 7072,
+                        "name": "ElementaryTypeName",
+                        "src": "483:4:26"
+                      }
+                    ],
+                    "id": 7073,
+                    "name": "VariableDeclaration",
+                    "src": "483:4:26"
+                  }
+                ],
+                "id": 7074,
+                "name": "ParameterList",
+                "src": "473:15:26"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        7076
+                      ],
+                      "initialValue": null
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "index",
+                          "scope": 7116,
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "type": "uint256",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "uint256",
+                              "type": "uint256"
+                            },
+                            "id": 7075,
+                            "name": "ElementaryTypeName",
+                            "src": "499:7:26"
+                          }
+                        ],
+                        "id": 7076,
+                        "name": "VariableDeclaration",
+                        "src": "499:13:26"
+                      }
+                    ],
+                    "id": 7077,
+                    "name": "VariableDeclarationStatement",
+                    "src": "499:13:26"
+                  },
+                  {
+                    "attributes": {
+                      "assignments": [
+                        7079
+                      ],
+                      "initialValue": null
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "exists",
+                          "scope": 7116,
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "type": "bool",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "bool",
+                              "type": "bool"
+                            },
+                            "id": 7078,
+                            "name": "ElementaryTypeName",
+                            "src": "522:4:26"
+                          }
+                        ],
+                        "id": 7079,
+                        "name": "VariableDeclaration",
+                        "src": "522:11:26"
+                      }
+                    ],
+                    "id": 7080,
+                    "name": "VariableDeclarationStatement",
+                    "src": "522:11:26"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "assignments": [
+                            7082
+                          ]
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "constant": false,
+                              "name": "i",
+                              "scope": 7111,
+                              "stateVariable": false,
+                              "storageLocation": "default",
+                              "type": "uint256",
+                              "value": null,
+                              "visibility": "internal"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "name": "uint256",
+                                  "type": "uint256"
+                                },
+                                "id": 7081,
+                                "name": "ElementaryTypeName",
+                                "src": "549:7:26"
+                              }
+                            ],
+                            "id": 7082,
+                            "name": "VariableDeclaration",
+                            "src": "549:9:26"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "30",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 0",
+                              "value": "0"
+                            },
+                            "id": 7083,
+                            "name": "Literal",
+                            "src": "561:1:26"
+                          }
+                        ],
+                        "id": 7084,
+                        "name": "VariableDeclarationStatement",
+                        "src": "549:13:26"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "<",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 7082,
+                              "type": "uint256",
+                              "value": "i"
+                            },
+                            "id": 7085,
+                            "name": "Identifier",
+                            "src": "564:1:26"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "length",
+                              "referencedDeclaration": null,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "array",
+                                  "referencedDeclaration": 7047,
+                                  "type": "address[] storage ref"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 7066,
+                                      "type": "struct ERC20Addresses.erc20Addresses storage pointer",
+                                      "value": "self"
+                                    },
+                                    "id": 7086,
+                                    "name": "Identifier",
+                                    "src": "568:4:26"
+                                  }
+                                ],
+                                "id": 7087,
+                                "name": "MemberAccess",
+                                "src": "568:10:26"
+                              }
+                            ],
+                            "id": 7088,
+                            "name": "MemberAccess",
+                            "src": "568:17:26"
+                          }
+                        ],
+                        "id": 7089,
+                        "name": "BinaryOperation",
+                        "src": "564:21:26"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "++",
+                              "prefix": false,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 7082,
+                                  "type": "uint256",
+                                  "value": "i"
+                                },
+                                "id": 7090,
+                                "name": "Identifier",
+                                "src": "587:1:26"
+                              }
+                            ],
+                            "id": 7091,
+                            "name": "UnaryOperation",
+                            "src": "587:3:26"
+                          }
+                        ],
+                        "id": 7092,
+                        "name": "ExpressionStatement",
+                        "src": "587:3:26"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "falseBody": null
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "commonType": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "==",
+                                  "type": "bool"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": true,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "type": "address"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": true,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "member_name": "array",
+                                          "referencedDeclaration": 7047,
+                                          "type": "address[] storage ref"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 7066,
+                                              "type": "struct ERC20Addresses.erc20Addresses storage pointer",
+                                              "value": "self"
+                                            },
+                                            "id": 7093,
+                                            "name": "Identifier",
+                                            "src": "610:4:26"
+                                          }
+                                        ],
+                                        "id": 7094,
+                                        "name": "MemberAccess",
+                                        "src": "610:10:26"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 7082,
+                                          "type": "uint256",
+                                          "value": "i"
+                                        },
+                                        "id": 7095,
+                                        "name": "Identifier",
+                                        "src": "621:1:26"
+                                      }
+                                    ],
+                                    "id": 7096,
+                                    "name": "IndexAccess",
+                                    "src": "610:13:26"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 7068,
+                                      "type": "address",
+                                      "value": "_ercTokenAddress"
+                                    },
+                                    "id": 7097,
+                                    "name": "Identifier",
+                                    "src": "627:16:26"
+                                  }
+                                ],
+                                "id": 7098,
+                                "name": "BinaryOperation",
+                                "src": "610:33:26"
+                              },
+                              {
+                                "children": [
+                                  {
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "operator": "=",
+                                          "type": "uint256"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 7076,
+                                              "type": "uint256",
+                                              "value": "index"
+                                            },
+                                            "id": 7099,
+                                            "name": "Identifier",
+                                            "src": "663:5:26"
+                                          },
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 7082,
+                                              "type": "uint256",
+                                              "value": "i"
+                                            },
+                                            "id": 7100,
+                                            "name": "Identifier",
+                                            "src": "671:1:26"
+                                          }
+                                        ],
+                                        "id": 7101,
+                                        "name": "Assignment",
+                                        "src": "663:9:26"
+                                      }
+                                    ],
+                                    "id": 7102,
+                                    "name": "ExpressionStatement",
+                                    "src": "663:9:26"
+                                  },
+                                  {
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "operator": "=",
+                                          "type": "bool"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 7079,
+                                              "type": "bool",
+                                              "value": "exists"
+                                            },
+                                            "id": 7103,
+                                            "name": "Identifier",
+                                            "src": "690:6:26"
+                                          },
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "hexvalue": "74727565",
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": true,
+                                              "lValueRequested": false,
+                                              "subdenomination": null,
+                                              "token": "bool",
+                                              "type": "bool",
+                                              "value": "true"
+                                            },
+                                            "id": 7104,
+                                            "name": "Literal",
+                                            "src": "699:4:26"
+                                          }
+                                        ],
+                                        "id": 7105,
+                                        "name": "Assignment",
+                                        "src": "690:13:26"
+                                      }
+                                    ],
+                                    "id": 7106,
+                                    "name": "ExpressionStatement",
+                                    "src": "690:13:26"
+                                  },
+                                  {
+                                    "id": 7107,
+                                    "name": "Break",
+                                    "src": "722:5:26"
+                                  }
+                                ],
+                                "id": 7108,
+                                "name": "Block",
+                                "src": "645:97:26"
+                              }
+                            ],
+                            "id": 7109,
+                            "name": "IfStatement",
+                            "src": "606:136:26"
+                          }
+                        ],
+                        "id": 7110,
+                        "name": "Block",
+                        "src": "592:160:26"
+                      }
+                    ],
+                    "id": 7111,
+                    "name": "ForStatement",
+                    "src": "544:208:26"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 7074
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isInlineArray": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "tuple(uint256,bool)"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 7076,
+                              "type": "uint256",
+                              "value": "index"
+                            },
+                            "id": 7112,
+                            "name": "Identifier",
+                            "src": "769:5:26"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 7079,
+                              "type": "bool",
+                              "value": "exists"
+                            },
+                            "id": 7113,
+                            "name": "Identifier",
+                            "src": "776:6:26"
+                          }
+                        ],
+                        "id": 7114,
+                        "name": "TupleExpression",
+                        "src": "768:15:26"
+                      }
+                    ],
+                    "id": 7115,
+                    "name": "Return",
+                    "src": "761:22:26"
+                  }
+                ],
+                "id": 7116,
+                "name": "Block",
+                "src": "489:301:26"
+              }
+            ],
+            "id": 7117,
+            "name": "FunctionDefinition",
+            "src": "344:446:26"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "removeERC20Token",
+              "scope": 7206,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "self",
+                      "scope": 7169,
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "type": "struct ERC20Addresses.erc20Addresses",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "erc20Addresses",
+                          "referencedDeclaration": 7048,
+                          "type": "struct ERC20Addresses.erc20Addresses"
+                        },
+                        "id": 7118,
+                        "name": "UserDefinedTypeName",
+                        "src": "831:14:26"
+                      }
+                    ],
+                    "id": 7119,
+                    "name": "VariableDeclaration",
+                    "src": "831:27:26"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_ercTokenAddress",
+                      "scope": 7169,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 7120,
+                        "name": "ElementaryTypeName",
+                        "src": "868:7:26"
+                      }
+                    ],
+                    "id": 7121,
+                    "name": "VariableDeclaration",
+                    "src": "868:24:26"
+                  }
+                ],
+                "id": 7122,
+                "name": "ParameterList",
+                "src": "821:77:26"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 7123,
+                "name": "ParameterList",
+                "src": "908:0:26"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": ">",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "length",
+                              "referencedDeclaration": null,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "array",
+                                  "referencedDeclaration": 7047,
+                                  "type": "address[] storage ref"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 7119,
+                                      "type": "struct ERC20Addresses.erc20Addresses storage pointer",
+                                      "value": "self"
+                                    },
+                                    "id": 7124,
+                                    "name": "Identifier",
+                                    "src": "922:4:26"
+                                  }
+                                ],
+                                "id": 7125,
+                                "name": "MemberAccess",
+                                "src": "922:10:26"
+                              }
+                            ],
+                            "id": 7126,
+                            "name": "MemberAccess",
+                            "src": "922:17:26"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "31",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 1",
+                              "value": "1"
+                            },
+                            "id": 7127,
+                            "name": "Literal",
+                            "src": "942:1:26"
+                          }
+                        ],
+                        "id": 7128,
+                        "name": "BinaryOperation",
+                        "src": "922:21:26"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "assignments": [
+                                    7130
+                                  ]
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "constant": false,
+                                      "name": "i",
+                                      "scope": 7156,
+                                      "stateVariable": false,
+                                      "storageLocation": "default",
+                                      "type": "uint256",
+                                      "value": null,
+                                      "visibility": "internal"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "name": "uint256",
+                                          "type": "uint256"
+                                        },
+                                        "id": 7129,
+                                        "name": "ElementaryTypeName",
+                                        "src": "963:7:26"
+                                      }
+                                    ],
+                                    "id": 7130,
+                                    "name": "VariableDeclaration",
+                                    "src": "963:9:26"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "hexvalue": "30",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "subdenomination": null,
+                                      "token": "number",
+                                      "type": "int_const 0",
+                                      "value": "0"
+                                    },
+                                    "id": 7131,
+                                    "name": "Literal",
+                                    "src": "975:1:26"
+                                  }
+                                ],
+                                "id": 7132,
+                                "name": "VariableDeclarationStatement",
+                                "src": "963:13:26"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "commonType": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "<",
+                                  "type": "bool"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 7130,
+                                      "type": "uint256",
+                                      "value": "i"
+                                    },
+                                    "id": 7133,
+                                    "name": "Identifier",
+                                    "src": "978:1:26"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": true,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "length",
+                                      "referencedDeclaration": null,
+                                      "type": "uint256"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": true,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "member_name": "array",
+                                          "referencedDeclaration": 7047,
+                                          "type": "address[] storage ref"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 7119,
+                                              "type": "struct ERC20Addresses.erc20Addresses storage pointer",
+                                              "value": "self"
+                                            },
+                                            "id": 7134,
+                                            "name": "Identifier",
+                                            "src": "982:4:26"
+                                          }
+                                        ],
+                                        "id": 7135,
+                                        "name": "MemberAccess",
+                                        "src": "982:10:26"
+                                      }
+                                    ],
+                                    "id": 7136,
+                                    "name": "MemberAccess",
+                                    "src": "982:17:26"
+                                  }
+                                ],
+                                "id": 7137,
+                                "name": "BinaryOperation",
+                                "src": "978:21:26"
+                              },
+                              {
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "operator": "++",
+                                      "prefix": false,
+                                      "type": "uint256"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 7130,
+                                          "type": "uint256",
+                                          "value": "i"
+                                        },
+                                        "id": 7138,
+                                        "name": "Identifier",
+                                        "src": "1001:1:26"
+                                      }
+                                    ],
+                                    "id": 7139,
+                                    "name": "UnaryOperation",
+                                    "src": "1001:3:26"
+                                  }
+                                ],
+                                "id": 7140,
+                                "name": "ExpressionStatement",
+                                "src": "1001:3:26"
+                              },
+                              {
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "falseBody": null
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "commonType": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                          },
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "operator": "==",
+                                          "type": "bool"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "isConstant": false,
+                                              "isLValue": true,
+                                              "isPure": false,
+                                              "lValueRequested": false,
+                                              "type": "address"
+                                            },
+                                            "children": [
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": null,
+                                                  "isConstant": false,
+                                                  "isLValue": true,
+                                                  "isPure": false,
+                                                  "lValueRequested": false,
+                                                  "member_name": "array",
+                                                  "referencedDeclaration": 7047,
+                                                  "type": "address[] storage ref"
+                                                },
+                                                "children": [
+                                                  {
+                                                    "attributes": {
+                                                      "argumentTypes": null,
+                                                      "overloadedDeclarations": [
+                                                        null
+                                                      ],
+                                                      "referencedDeclaration": 7119,
+                                                      "type": "struct ERC20Addresses.erc20Addresses storage pointer",
+                                                      "value": "self"
+                                                    },
+                                                    "id": 7141,
+                                                    "name": "Identifier",
+                                                    "src": "1057:4:26"
+                                                  }
+                                                ],
+                                                "id": 7142,
+                                                "name": "MemberAccess",
+                                                "src": "1057:10:26"
+                                              },
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": null,
+                                                  "overloadedDeclarations": [
+                                                    null
+                                                  ],
+                                                  "referencedDeclaration": 7130,
+                                                  "type": "uint256",
+                                                  "value": "i"
+                                                },
+                                                "id": 7143,
+                                                "name": "Identifier",
+                                                "src": "1068:1:26"
+                                              }
+                                            ],
+                                            "id": 7144,
+                                            "name": "IndexAccess",
+                                            "src": "1057:13:26"
+                                          },
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 7121,
+                                              "type": "address",
+                                              "value": "_ercTokenAddress"
+                                            },
+                                            "id": 7145,
+                                            "name": "Identifier",
+                                            "src": "1074:16:26"
+                                          }
+                                        ],
+                                        "id": 7146,
+                                        "name": "BinaryOperation",
+                                        "src": "1057:33:26"
+                                      },
+                                      {
+                                        "children": [
+                                          {
+                                            "children": [
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": null,
+                                                  "isConstant": false,
+                                                  "isLValue": false,
+                                                  "isPure": false,
+                                                  "lValueRequested": false,
+                                                  "operator": "delete",
+                                                  "prefix": true,
+                                                  "type": "tuple()"
+                                                },
+                                                "children": [
+                                                  {
+                                                    "attributes": {
+                                                      "argumentTypes": null,
+                                                      "isConstant": false,
+                                                      "isLValue": true,
+                                                      "isPure": false,
+                                                      "lValueRequested": true,
+                                                      "type": "address"
+                                                    },
+                                                    "children": [
+                                                      {
+                                                        "attributes": {
+                                                          "argumentTypes": null,
+                                                          "isConstant": false,
+                                                          "isLValue": true,
+                                                          "isPure": false,
+                                                          "lValueRequested": false,
+                                                          "member_name": "array",
+                                                          "referencedDeclaration": 7047,
+                                                          "type": "address[] storage ref"
+                                                        },
+                                                        "children": [
+                                                          {
+                                                            "attributes": {
+                                                              "argumentTypes": null,
+                                                              "overloadedDeclarations": [
+                                                                null
+                                                              ],
+                                                              "referencedDeclaration": 7119,
+                                                              "type": "struct ERC20Addresses.erc20Addresses storage pointer",
+                                                              "value": "self"
+                                                            },
+                                                            "id": 7147,
+                                                            "name": "Identifier",
+                                                            "src": "1147:4:26"
+                                                          }
+                                                        ],
+                                                        "id": 7148,
+                                                        "name": "MemberAccess",
+                                                        "src": "1147:10:26"
+                                                      },
+                                                      {
+                                                        "attributes": {
+                                                          "argumentTypes": null,
+                                                          "overloadedDeclarations": [
+                                                            null
+                                                          ],
+                                                          "referencedDeclaration": 7130,
+                                                          "type": "uint256",
+                                                          "value": "i"
+                                                        },
+                                                        "id": 7149,
+                                                        "name": "Identifier",
+                                                        "src": "1158:1:26"
+                                                      }
+                                                    ],
+                                                    "id": 7150,
+                                                    "name": "IndexAccess",
+                                                    "src": "1147:13:26"
+                                                  }
+                                                ],
+                                                "id": 7151,
+                                                "name": "UnaryOperation",
+                                                "src": "1140:20:26"
+                                              }
+                                            ],
+                                            "id": 7152,
+                                            "name": "ExpressionStatement",
+                                            "src": "1140:20:26"
+                                          }
+                                        ],
+                                        "id": 7153,
+                                        "name": "Block",
+                                        "src": "1114:69:26"
+                                      }
+                                    ],
+                                    "id": 7154,
+                                    "name": "IfStatement",
+                                    "src": "1028:155:26"
+                                  }
+                                ],
+                                "id": 7155,
+                                "name": "Block",
+                                "src": "1006:195:26"
+                              }
+                            ],
+                            "id": 7156,
+                            "name": "ForStatement",
+                            "src": "958:243:26"
+                          }
+                        ],
+                        "id": 7157,
+                        "name": "Block",
+                        "src": "944:267:26"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "=",
+                                  "type": "uint256"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": true,
+                                      "isPure": false,
+                                      "lValueRequested": true,
+                                      "member_name": "length",
+                                      "referencedDeclaration": null,
+                                      "type": "uint256"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": true,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "member_name": "array",
+                                          "referencedDeclaration": 7047,
+                                          "type": "address[] storage ref"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 7119,
+                                              "type": "struct ERC20Addresses.erc20Addresses storage pointer",
+                                              "value": "self"
+                                            },
+                                            "id": 7158,
+                                            "name": "Identifier",
+                                            "src": "1238:4:26"
+                                          }
+                                        ],
+                                        "id": 7161,
+                                        "name": "MemberAccess",
+                                        "src": "1238:10:26"
+                                      }
+                                    ],
+                                    "id": 7162,
+                                    "name": "MemberAccess",
+                                    "src": "1238:17:26"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "hexvalue": "30",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "subdenomination": null,
+                                      "token": "number",
+                                      "type": "int_const 0",
+                                      "value": "0"
+                                    },
+                                    "id": 7163,
+                                    "name": "Literal",
+                                    "src": "1258:1:26"
+                                  }
+                                ],
+                                "id": 7164,
+                                "name": "Assignment",
+                                "src": "1238:21:26"
+                              }
+                            ],
+                            "id": 7165,
+                            "name": "ExpressionStatement",
+                            "src": "1238:21:26"
+                          }
+                        ],
+                        "id": 7166,
+                        "name": "Block",
+                        "src": "1224:46:26"
+                      }
+                    ],
+                    "id": 7167,
+                    "name": "IfStatement",
+                    "src": "918:352:26"
+                  }
+                ],
+                "id": 7168,
+                "name": "Block",
+                "src": "908:368:26"
+              }
+            ],
+            "id": 7169,
+            "name": "FunctionDefinition",
+            "src": "796:480:26"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "exists",
+              "scope": 7206,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "self",
+                      "scope": 7205,
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "type": "struct ERC20Addresses.erc20Addresses",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "erc20Addresses",
+                          "referencedDeclaration": 7048,
+                          "type": "struct ERC20Addresses.erc20Addresses"
+                        },
+                        "id": 7170,
+                        "name": "UserDefinedTypeName",
+                        "src": "1306:14:26"
+                      }
+                    ],
+                    "id": 7171,
+                    "name": "VariableDeclaration",
+                    "src": "1306:27:26"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_ercTokenAddress",
+                      "scope": 7205,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 7172,
+                        "name": "ElementaryTypeName",
+                        "src": "1343:7:26"
+                      }
+                    ],
+                    "id": 7173,
+                    "name": "VariableDeclaration",
+                    "src": "1343:24:26"
+                  }
+                ],
+                "id": 7174,
+                "name": "ParameterList",
+                "src": "1296:77:26"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 7205,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 7175,
+                        "name": "ElementaryTypeName",
+                        "src": "1397:4:26"
+                      }
+                    ],
+                    "id": 7176,
+                    "name": "VariableDeclaration",
+                    "src": "1397:4:26"
+                  }
+                ],
+                "id": 7177,
+                "name": "ParameterList",
+                "src": "1396:6:26"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "assignments": [
+                            7179
+                          ]
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "constant": false,
+                              "name": "i",
+                              "scope": 7201,
+                              "stateVariable": false,
+                              "storageLocation": "default",
+                              "type": "uint256",
+                              "value": null,
+                              "visibility": "internal"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "name": "uint256",
+                                  "type": "uint256"
+                                },
+                                "id": 7178,
+                                "name": "ElementaryTypeName",
+                                "src": "1418:7:26"
+                              }
+                            ],
+                            "id": 7179,
+                            "name": "VariableDeclaration",
+                            "src": "1418:9:26"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "30",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 0",
+                              "value": "0"
+                            },
+                            "id": 7180,
+                            "name": "Literal",
+                            "src": "1430:1:26"
+                          }
+                        ],
+                        "id": 7181,
+                        "name": "VariableDeclarationStatement",
+                        "src": "1418:13:26"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "<",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 7179,
+                              "type": "uint256",
+                              "value": "i"
+                            },
+                            "id": 7182,
+                            "name": "Identifier",
+                            "src": "1433:1:26"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "length",
+                              "referencedDeclaration": null,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "array",
+                                  "referencedDeclaration": 7047,
+                                  "type": "address[] storage ref"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 7171,
+                                      "type": "struct ERC20Addresses.erc20Addresses storage pointer",
+                                      "value": "self"
+                                    },
+                                    "id": 7183,
+                                    "name": "Identifier",
+                                    "src": "1437:4:26"
+                                  }
+                                ],
+                                "id": 7184,
+                                "name": "MemberAccess",
+                                "src": "1437:10:26"
+                              }
+                            ],
+                            "id": 7185,
+                            "name": "MemberAccess",
+                            "src": "1437:17:26"
+                          }
+                        ],
+                        "id": 7186,
+                        "name": "BinaryOperation",
+                        "src": "1433:21:26"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "++",
+                              "prefix": false,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 7179,
+                                  "type": "uint256",
+                                  "value": "i"
+                                },
+                                "id": 7187,
+                                "name": "Identifier",
+                                "src": "1456:1:26"
+                              }
+                            ],
+                            "id": 7188,
+                            "name": "UnaryOperation",
+                            "src": "1456:3:26"
+                          }
+                        ],
+                        "id": 7189,
+                        "name": "ExpressionStatement",
+                        "src": "1456:3:26"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "falseBody": null
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "commonType": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "==",
+                                  "type": "bool"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": true,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "type": "address"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": true,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "member_name": "array",
+                                          "referencedDeclaration": 7047,
+                                          "type": "address[] storage ref"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 7171,
+                                              "type": "struct ERC20Addresses.erc20Addresses storage pointer",
+                                              "value": "self"
+                                            },
+                                            "id": 7190,
+                                            "name": "Identifier",
+                                            "src": "1496:4:26"
+                                          }
+                                        ],
+                                        "id": 7191,
+                                        "name": "MemberAccess",
+                                        "src": "1496:10:26"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 7179,
+                                          "type": "uint256",
+                                          "value": "i"
+                                        },
+                                        "id": 7192,
+                                        "name": "Identifier",
+                                        "src": "1507:1:26"
+                                      }
+                                    ],
+                                    "id": 7193,
+                                    "name": "IndexAccess",
+                                    "src": "1496:13:26"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 7173,
+                                      "type": "address",
+                                      "value": "_ercTokenAddress"
+                                    },
+                                    "id": 7194,
+                                    "name": "Identifier",
+                                    "src": "1513:16:26"
+                                  }
+                                ],
+                                "id": 7195,
+                                "name": "BinaryOperation",
+                                "src": "1496:33:26"
+                              },
+                              {
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "functionReturnParameters": 7177
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "hexvalue": "74727565",
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "subdenomination": null,
+                                          "token": "bool",
+                                          "type": "bool",
+                                          "value": "true"
+                                        },
+                                        "id": 7196,
+                                        "name": "Literal",
+                                        "src": "1570:4:26"
+                                      }
+                                    ],
+                                    "id": 7197,
+                                    "name": "Return",
+                                    "src": "1563:11:26"
+                                  }
+                                ],
+                                "id": 7198,
+                                "name": "Block",
+                                "src": "1545:44:26"
+                              }
+                            ],
+                            "id": 7199,
+                            "name": "IfStatement",
+                            "src": "1475:114:26"
+                          }
+                        ],
+                        "id": 7200,
+                        "name": "Block",
+                        "src": "1461:138:26"
+                      }
+                    ],
+                    "id": 7201,
+                    "name": "ForStatement",
+                    "src": "1413:186:26"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 7177
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "hexvalue": "66616c7365",
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "subdenomination": null,
+                          "token": "bool",
+                          "type": "bool",
+                          "value": "false"
+                        },
+                        "id": 7202,
+                        "name": "Literal",
+                        "src": "1615:5:26"
+                      }
+                    ],
+                    "id": 7203,
+                    "name": "Return",
+                    "src": "1608:12:26"
+                  }
+                ],
+                "id": 7204,
+                "name": "Block",
+                "src": "1403:224:26"
+              }
+            ],
+            "id": 7205,
+            "name": "FunctionDefinition",
+            "src": "1281:346:26"
+          }
+        ],
+        "id": 7206,
+        "name": "ContractDefinition",
+        "src": "61:1568:26"
+      }
+    ],
+    "id": 7207,
+    "name": "SourceUnit",
+    "src": "0:1630:26"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-11-01T10:56:16.729Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

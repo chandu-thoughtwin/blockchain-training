@@ -1,0 +1,4027 @@
+{
+  "contractName": "AddressArrayLib",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/brokerV2_utils/AddressArrayLib.sol\":\"AddressArrayLib\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/brokerV2_utils/AddressArrayLib.sol\":{\"keccak256\":\"0x990486dd65989b674e88d4f8abec9331e504dba4eef2f70674664a3f47d14ad0\",\"urls\":[\"bzz-raw://8f28ff1e2221a29bd7ca8c2b4c12dac9e4069427faae2fa8d8a54711ac8855c4\",\"dweb:/ipfs/QmQK6EiooH98eTJEu2KEpAe6Juo8uvRgueoL8wWj3qv3am\"]}},\"version\":1}",
+  "bytecode": "0x610147610026600b82828239805160001a60731461001957fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600436106100355760003560e01c806368756ab21461003a575b600080fd5b81801561004657600080fd5b506100736004803603604081101561005d57600080fd5b50803590602001356001600160a01b0316610075565b005b61007f82826100b3565b6100af5781546001810183556000838152602090200180546001600160a01b0319166001600160a01b0383161790555b5050565b6000805b835481101561010657826001600160a01b03168460000182815481106100d957fe5b6000918252602090912001546001600160a01b031614156100fe57600191505061010c565b6001016100b7565b50600090505b9291505056fea265627a7a72315820d8921a546fe00403c5cb957556117edd45d677f038c162c39e313ec0f858402664736f6c63430005110032",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600436106100355760003560e01c806368756ab21461003a575b600080fd5b81801561004657600080fd5b506100736004803603604081101561005d57600080fd5b50803590602001356001600160a01b0316610075565b005b61007f82826100b3565b6100af5781546001810183556000838152602090200180546001600160a01b0319166001600160a01b0383161790555b5050565b6000805b835481101561010657826001600160a01b03168460000182815481106100d957fe5b6000918252602090912001546001600160a01b031614156100fe57600191505061010c565b6001016100b7565b50600090505b9291505056fea265627a7a72315820d8921a546fe00403c5cb957556117edd45d677f038c162c39e313ec0f858402664736f6c63430005110032",
+  "sourceMap": "95:1366:24:-;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
+  "deployedSourceMap": "95:1366:24:-;;;;;;;;;;;;;;;;;;;;;;;;222:170;;8:9:-1;5:2;;;30:1;27;20:12;5:2;222:170:24;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;222:170:24;;;;;;-1:-1:-1;;;;;222:170:24;;:::i;:::-;;;313:22;320:4;326:8;313:6;:22::i;:::-;308:78;;27:10:-1;;39:1;23:18;;45:23;;-1:-1;350:25:24;;;;;;;;;-1:-1:-1;;;;;;350:25:24;-1:-1:-1;;;;;350:25:24;;;;;308:78;222:170;;:::o;1134:325::-;1237:4;;1253:178;1277:17;;1273:21;;1253:178;;;1353:8;-1:-1:-1;;;;;1336:25:24;:4;:10;;1347:1;1336:13;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;1336:13:24;:25;1315:106;;;1402:4;1395:11;;;;;1315:106;1296:3;;1253:178;;;;1447:5;1440:12;;1134:325;;;;;:::o",
+  "source": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.5.17;\n\n// library for address array \nlibrary AddressArrayLib {\n    using AddressArrayLib for addresses;\n\n    struct addresses {\n        address[] array;\n    }\n\n    function add(addresses storage self, address _address)\n        external\n    {\n        if(! exists(self, _address)){\n            self.array.push(_address);\n        }\n    }\n\n    function getIndexByAddress(\n        addresses storage self,\n        address _address\n    ) internal view returns (uint256, bool) {\n        uint256 index;\n        bool exists_;\n\n        for (uint256 i = 0; i < self.array.length; i++) {\n            if (self.array[i] == _address) {\n                index = i;\n                exists_ = true;\n\n                break;\n            }\n        }\n        return (index, exists_);\n    }\n\n    function removeAddress(\n        addresses storage self,\n        address _address\n    ) internal {\n       for (uint256 i = 0; i < self.array.length; i++) {\n            if (\n                self.array[i] == _address \n            ) {\n                delete self.array[i];\n            }\n        }\n    }\n\n\n    function exists(\n        addresses storage self,\n        address _address\n    ) internal view returns (bool) {\n        for (uint256 i = 0; i < self.array.length; i++) {\n            if (\n                self.array[i] == _address \n            ) {\n                return true;\n            }\n        }\n        return false;\n    }\n}",
+  "sourcePath": "/Users/thoughtwin/Desktop/weblisto/clubrare/smart_contracts/contracts/brokerV2_utils/AddressArrayLib.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/brokerV2_utils/AddressArrayLib.sol",
+    "exportedSymbols": {
+      "AddressArrayLib": [
+        6897
+      ]
+    },
+    "id": 6898,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6741,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".17"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:24:24"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 6897,
+        "linearizedBaseContracts": [
+          6897
+        ],
+        "name": "AddressArrayLib",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 6744,
+            "libraryName": {
+              "contractScope": null,
+              "id": 6742,
+              "name": "AddressArrayLib",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6897,
+              "src": "131:15:24",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AddressArrayLib_$6897",
+                "typeString": "library AddressArrayLib"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "125:36:24",
+            "typeName": {
+              "contractScope": null,
+              "id": 6743,
+              "name": "addresses",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6748,
+              "src": "151:9:24",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                "typeString": "struct AddressArrayLib.addresses"
+              }
+            }
+          },
+          {
+            "canonicalName": "AddressArrayLib.addresses",
+            "id": 6748,
+            "members": [
+              {
+                "constant": false,
+                "id": 6747,
+                "name": "array",
+                "nodeType": "VariableDeclaration",
+                "scope": 6748,
+                "src": "194:15:24",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                  "typeString": "address[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 6745,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "194:7:24",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6746,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "194:9:24",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                    "typeString": "address[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "addresses",
+            "nodeType": "StructDefinition",
+            "scope": 6897,
+            "src": "167:49:24",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6770,
+              "nodeType": "Block",
+              "src": "298:94:24",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "id": 6759,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "!",
+                    "prefix": true,
+                    "src": "311:24:24",
+                    "subExpression": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 6756,
+                          "name": "self",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6750,
+                          "src": "320:4:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                            "typeString": "struct AddressArrayLib.addresses storage pointer"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 6757,
+                          "name": "_address",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6752,
+                          "src": "326:8:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                            "typeString": "struct AddressArrayLib.addresses storage pointer"
+                          },
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 6755,
+                        "name": "exists",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6896,
+                        "src": "313:6:24",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_view$_t_struct$_addresses_$6748_storage_ptr_$_t_address_$returns$_t_bool_$",
+                          "typeString": "function (struct AddressArrayLib.addresses storage pointer,address) view returns (bool)"
+                        }
+                      },
+                      "id": 6758,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "313:22:24",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 6769,
+                  "nodeType": "IfStatement",
+                  "src": "308:78:24",
+                  "trueBody": {
+                    "id": 6768,
+                    "nodeType": "Block",
+                    "src": "336:50:24",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 6765,
+                              "name": "_address",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 6752,
+                              "src": "366:8:24",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 6760,
+                                "name": "self",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 6750,
+                                "src": "350:4:24",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                                  "typeString": "struct AddressArrayLib.addresses storage pointer"
+                                }
+                              },
+                              "id": 6763,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "array",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 6747,
+                              "src": "350:10:24",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                "typeString": "address[] storage ref"
+                              }
+                            },
+                            "id": 6764,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "push",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "350:15:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_address_$returns$_t_uint256_$",
+                              "typeString": "function (address) returns (uint256)"
+                            }
+                          },
+                          "id": 6766,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "350:25:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 6767,
+                        "nodeType": "ExpressionStatement",
+                        "src": "350:25:24"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6771,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "add",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6753,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6750,
+                  "name": "self",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6771,
+                  "src": "235:22:24",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                    "typeString": "struct AddressArrayLib.addresses"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 6749,
+                    "name": "addresses",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 6748,
+                    "src": "235:9:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                      "typeString": "struct AddressArrayLib.addresses"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6752,
+                  "name": "_address",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6771,
+                  "src": "259:16:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6751,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "259:7:24",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "234:42:24"
+            },
+            "returnParameters": {
+              "id": 6754,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "298:0:24"
+            },
+            "scope": 6897,
+            "src": "222:170:24",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 6823,
+              "nodeType": "Block",
+              "src": "527:296:24",
+              "statements": [
+                {
+                  "assignments": [
+                    6783
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 6783,
+                      "name": "index",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 6823,
+                      "src": "537:13:24",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 6782,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "537:7:24",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 6784,
+                  "initialValue": null,
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "537:13:24"
+                },
+                {
+                  "assignments": [
+                    6786
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 6786,
+                      "name": "exists_",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 6823,
+                      "src": "560:12:24",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "typeName": {
+                        "id": 6785,
+                        "name": "bool",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "560:4:24",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 6787,
+                  "initialValue": null,
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "560:12:24"
+                },
+                {
+                  "body": {
+                    "id": 6817,
+                    "nodeType": "Block",
+                    "src": "631:153:24",
+                    "statements": [
+                      {
+                        "condition": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "id": 6805,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "argumentTypes": null,
+                            "baseExpression": {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 6800,
+                                "name": "self",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 6773,
+                                "src": "649:4:24",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                                  "typeString": "struct AddressArrayLib.addresses storage pointer"
+                                }
+                              },
+                              "id": 6801,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "array",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 6747,
+                              "src": "649:10:24",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                "typeString": "address[] storage ref"
+                              }
+                            },
+                            "id": 6803,
+                            "indexExpression": {
+                              "argumentTypes": null,
+                              "id": 6802,
+                              "name": "i",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 6789,
+                              "src": "660:1:24",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "649:13:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "==",
+                          "rightExpression": {
+                            "argumentTypes": null,
+                            "id": 6804,
+                            "name": "_address",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 6775,
+                            "src": "666:8:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "src": "649:25:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "falseBody": null,
+                        "id": 6816,
+                        "nodeType": "IfStatement",
+                        "src": "645:129:24",
+                        "trueBody": {
+                          "id": 6815,
+                          "nodeType": "Block",
+                          "src": "676:98:24",
+                          "statements": [
+                            {
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 6808,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftHandSide": {
+                                  "argumentTypes": null,
+                                  "id": 6806,
+                                  "name": "index",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 6783,
+                                  "src": "694:5:24",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "nodeType": "Assignment",
+                                "operator": "=",
+                                "rightHandSide": {
+                                  "argumentTypes": null,
+                                  "id": 6807,
+                                  "name": "i",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 6789,
+                                  "src": "702:1:24",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "src": "694:9:24",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "id": 6809,
+                              "nodeType": "ExpressionStatement",
+                              "src": "694:9:24"
+                            },
+                            {
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 6812,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftHandSide": {
+                                  "argumentTypes": null,
+                                  "id": 6810,
+                                  "name": "exists_",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 6786,
+                                  "src": "721:7:24",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_bool",
+                                    "typeString": "bool"
+                                  }
+                                },
+                                "nodeType": "Assignment",
+                                "operator": "=",
+                                "rightHandSide": {
+                                  "argumentTypes": null,
+                                  "hexValue": "74727565",
+                                  "id": 6811,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "bool",
+                                  "lValueRequested": false,
+                                  "nodeType": "Literal",
+                                  "src": "731:4:24",
+                                  "subdenomination": null,
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_bool",
+                                    "typeString": "bool"
+                                  },
+                                  "value": "true"
+                                },
+                                "src": "721:14:24",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              },
+                              "id": 6813,
+                              "nodeType": "ExpressionStatement",
+                              "src": "721:14:24"
+                            },
+                            {
+                              "id": 6814,
+                              "nodeType": "Break",
+                              "src": "754:5:24"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 6796,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 6792,
+                      "name": "i",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6789,
+                      "src": "603:1:24",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 6793,
+                          "name": "self",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6773,
+                          "src": "607:4:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                            "typeString": "struct AddressArrayLib.addresses storage pointer"
+                          }
+                        },
+                        "id": 6794,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "array",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 6747,
+                        "src": "607:10:24",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 6795,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "607:17:24",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "603:21:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 6818,
+                  "initializationExpression": {
+                    "assignments": [
+                      6789
+                    ],
+                    "declarations": [
+                      {
+                        "constant": false,
+                        "id": 6789,
+                        "name": "i",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 6818,
+                        "src": "588:9:24",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 6788,
+                          "name": "uint256",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "588:7:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "value": null,
+                        "visibility": "internal"
+                      }
+                    ],
+                    "id": 6791,
+                    "initialValue": {
+                      "argumentTypes": null,
+                      "hexValue": "30",
+                      "id": 6790,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "600:1:24",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "nodeType": "VariableDeclarationStatement",
+                    "src": "588:13:24"
+                  },
+                  "loopExpression": {
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 6798,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "++",
+                      "prefix": false,
+                      "src": "626:3:24",
+                      "subExpression": {
+                        "argumentTypes": null,
+                        "id": 6797,
+                        "name": "i",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6789,
+                        "src": "626:1:24",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 6799,
+                    "nodeType": "ExpressionStatement",
+                    "src": "626:3:24"
+                  },
+                  "nodeType": "ForStatement",
+                  "src": "583:201:24"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "id": 6819,
+                        "name": "index",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6783,
+                        "src": "801:5:24",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 6820,
+                        "name": "exists_",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6786,
+                        "src": "808:7:24",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "id": 6821,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "800:16:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_uint256_$_t_bool_$",
+                      "typeString": "tuple(uint256,bool)"
+                    }
+                  },
+                  "functionReturnParameters": 6781,
+                  "id": 6822,
+                  "nodeType": "Return",
+                  "src": "793:23:24"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6824,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getIndexByAddress",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6776,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6773,
+                  "name": "self",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6824,
+                  "src": "434:22:24",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                    "typeString": "struct AddressArrayLib.addresses"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 6772,
+                    "name": "addresses",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 6748,
+                    "src": "434:9:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                      "typeString": "struct AddressArrayLib.addresses"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6775,
+                  "name": "_address",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6824,
+                  "src": "466:16:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6774,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "466:7:24",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "424:64:24"
+            },
+            "returnParameters": {
+              "id": 6781,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6778,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6824,
+                  "src": "512:7:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6777,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "512:7:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6780,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6824,
+                  "src": "521:4:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 6779,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "521:4:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "511:15:24"
+            },
+            "scope": 6897,
+            "src": "398:425:24",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 6859,
+              "nodeType": "Block",
+              "src": "925:202:24",
+              "statements": [
+                {
+                  "body": {
+                    "id": 6857,
+                    "nodeType": "Block",
+                    "src": "982:139:24",
+                    "statements": [
+                      {
+                        "condition": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "id": 6848,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "argumentTypes": null,
+                            "baseExpression": {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 6843,
+                                "name": "self",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 6826,
+                                "src": "1017:4:24",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                                  "typeString": "struct AddressArrayLib.addresses storage pointer"
+                                }
+                              },
+                              "id": 6844,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "array",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 6747,
+                              "src": "1017:10:24",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                "typeString": "address[] storage ref"
+                              }
+                            },
+                            "id": 6846,
+                            "indexExpression": {
+                              "argumentTypes": null,
+                              "id": 6845,
+                              "name": "i",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 6832,
+                              "src": "1028:1:24",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "1017:13:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "==",
+                          "rightExpression": {
+                            "argumentTypes": null,
+                            "id": 6847,
+                            "name": "_address",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 6828,
+                            "src": "1034:8:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "src": "1017:25:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "falseBody": null,
+                        "id": 6856,
+                        "nodeType": "IfStatement",
+                        "src": "996:115:24",
+                        "trueBody": {
+                          "id": 6855,
+                          "nodeType": "Block",
+                          "src": "1058:53:24",
+                          "statements": [
+                            {
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 6853,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "nodeType": "UnaryOperation",
+                                "operator": "delete",
+                                "prefix": true,
+                                "src": "1076:20:24",
+                                "subExpression": {
+                                  "argumentTypes": null,
+                                  "baseExpression": {
+                                    "argumentTypes": null,
+                                    "expression": {
+                                      "argumentTypes": null,
+                                      "id": 6849,
+                                      "name": "self",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 6826,
+                                      "src": "1083:4:24",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                                        "typeString": "struct AddressArrayLib.addresses storage pointer"
+                                      }
+                                    },
+                                    "id": 6850,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "array",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 6747,
+                                    "src": "1083:10:24",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                      "typeString": "address[] storage ref"
+                                    }
+                                  },
+                                  "id": 6852,
+                                  "indexExpression": {
+                                    "argumentTypes": null,
+                                    "id": 6851,
+                                    "name": "i",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 6832,
+                                    "src": "1094:1:24",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": true,
+                                  "nodeType": "IndexAccess",
+                                  "src": "1083:13:24",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                },
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_tuple$__$",
+                                  "typeString": "tuple()"
+                                }
+                              },
+                              "id": 6854,
+                              "nodeType": "ExpressionStatement",
+                              "src": "1076:20:24"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 6839,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 6835,
+                      "name": "i",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6832,
+                      "src": "954:1:24",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 6836,
+                          "name": "self",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6826,
+                          "src": "958:4:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                            "typeString": "struct AddressArrayLib.addresses storage pointer"
+                          }
+                        },
+                        "id": 6837,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "array",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 6747,
+                        "src": "958:10:24",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 6838,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "958:17:24",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "954:21:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 6858,
+                  "initializationExpression": {
+                    "assignments": [
+                      6832
+                    ],
+                    "declarations": [
+                      {
+                        "constant": false,
+                        "id": 6832,
+                        "name": "i",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 6858,
+                        "src": "939:9:24",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 6831,
+                          "name": "uint256",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "939:7:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "value": null,
+                        "visibility": "internal"
+                      }
+                    ],
+                    "id": 6834,
+                    "initialValue": {
+                      "argumentTypes": null,
+                      "hexValue": "30",
+                      "id": 6833,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "951:1:24",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "nodeType": "VariableDeclarationStatement",
+                    "src": "939:13:24"
+                  },
+                  "loopExpression": {
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 6841,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "++",
+                      "prefix": false,
+                      "src": "977:3:24",
+                      "subExpression": {
+                        "argumentTypes": null,
+                        "id": 6840,
+                        "name": "i",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6832,
+                        "src": "977:1:24",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 6842,
+                    "nodeType": "ExpressionStatement",
+                    "src": "977:3:24"
+                  },
+                  "nodeType": "ForStatement",
+                  "src": "934:187:24"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6860,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "removeAddress",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6829,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6826,
+                  "name": "self",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6860,
+                  "src": "861:22:24",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                    "typeString": "struct AddressArrayLib.addresses"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 6825,
+                    "name": "addresses",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 6748,
+                    "src": "861:9:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                      "typeString": "struct AddressArrayLib.addresses"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6828,
+                  "name": "_address",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6860,
+                  "src": "893:16:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6827,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "893:7:24",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "851:64:24"
+            },
+            "returnParameters": {
+              "id": 6830,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "925:0:24"
+            },
+            "scope": 6897,
+            "src": "829:298:24",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 6895,
+              "nodeType": "Block",
+              "src": "1243:216:24",
+              "statements": [
+                {
+                  "body": {
+                    "id": 6891,
+                    "nodeType": "Block",
+                    "src": "1301:130:24",
+                    "statements": [
+                      {
+                        "condition": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "id": 6886,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "argumentTypes": null,
+                            "baseExpression": {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 6881,
+                                "name": "self",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 6862,
+                                "src": "1336:4:24",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                                  "typeString": "struct AddressArrayLib.addresses storage pointer"
+                                }
+                              },
+                              "id": 6882,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "array",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 6747,
+                              "src": "1336:10:24",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                "typeString": "address[] storage ref"
+                              }
+                            },
+                            "id": 6884,
+                            "indexExpression": {
+                              "argumentTypes": null,
+                              "id": 6883,
+                              "name": "i",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 6870,
+                              "src": "1347:1:24",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "1336:13:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "==",
+                          "rightExpression": {
+                            "argumentTypes": null,
+                            "id": 6885,
+                            "name": "_address",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 6864,
+                            "src": "1353:8:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "src": "1336:25:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "falseBody": null,
+                        "id": 6890,
+                        "nodeType": "IfStatement",
+                        "src": "1315:106:24",
+                        "trueBody": {
+                          "id": 6889,
+                          "nodeType": "Block",
+                          "src": "1377:44:24",
+                          "statements": [
+                            {
+                              "expression": {
+                                "argumentTypes": null,
+                                "hexValue": "74727565",
+                                "id": 6887,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "bool",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "1402:4:24",
+                                "subdenomination": null,
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                },
+                                "value": "true"
+                              },
+                              "functionReturnParameters": 6868,
+                              "id": 6888,
+                              "nodeType": "Return",
+                              "src": "1395:11:24"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 6877,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 6873,
+                      "name": "i",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6870,
+                      "src": "1273:1:24",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 6874,
+                          "name": "self",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6862,
+                          "src": "1277:4:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                            "typeString": "struct AddressArrayLib.addresses storage pointer"
+                          }
+                        },
+                        "id": 6875,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "array",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 6747,
+                        "src": "1277:10:24",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 6876,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "1277:17:24",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1273:21:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 6892,
+                  "initializationExpression": {
+                    "assignments": [
+                      6870
+                    ],
+                    "declarations": [
+                      {
+                        "constant": false,
+                        "id": 6870,
+                        "name": "i",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 6892,
+                        "src": "1258:9:24",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 6869,
+                          "name": "uint256",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1258:7:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "value": null,
+                        "visibility": "internal"
+                      }
+                    ],
+                    "id": 6872,
+                    "initialValue": {
+                      "argumentTypes": null,
+                      "hexValue": "30",
+                      "id": 6871,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1270:1:24",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "nodeType": "VariableDeclarationStatement",
+                    "src": "1258:13:24"
+                  },
+                  "loopExpression": {
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 6879,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "++",
+                      "prefix": false,
+                      "src": "1296:3:24",
+                      "subExpression": {
+                        "argumentTypes": null,
+                        "id": 6878,
+                        "name": "i",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6870,
+                        "src": "1296:1:24",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 6880,
+                    "nodeType": "ExpressionStatement",
+                    "src": "1296:3:24"
+                  },
+                  "nodeType": "ForStatement",
+                  "src": "1253:178:24"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "66616c7365",
+                    "id": 6893,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "1447:5:24",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "false"
+                  },
+                  "functionReturnParameters": 6868,
+                  "id": 6894,
+                  "nodeType": "Return",
+                  "src": "1440:12:24"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6896,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "exists",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6865,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6862,
+                  "name": "self",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6896,
+                  "src": "1159:22:24",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                    "typeString": "struct AddressArrayLib.addresses"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 6861,
+                    "name": "addresses",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 6748,
+                    "src": "1159:9:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                      "typeString": "struct AddressArrayLib.addresses"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6864,
+                  "name": "_address",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6896,
+                  "src": "1191:16:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6863,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1191:7:24",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1149:64:24"
+            },
+            "returnParameters": {
+              "id": 6868,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6867,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6896,
+                  "src": "1237:4:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 6866,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1237:4:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1236:6:24"
+            },
+            "scope": 6897,
+            "src": "1134:325:24",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 6898,
+        "src": "95:1366:24"
+      }
+    ],
+    "src": "39:1422:24"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/brokerV2_utils/AddressArrayLib.sol",
+      "exportedSymbols": {
+        "AddressArrayLib": [
+          6897
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.5",
+            ".17"
+          ]
+        },
+        "id": 6741,
+        "name": "PragmaDirective",
+        "src": "39:24:24"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "library",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            6897
+          ],
+          "name": "AddressArrayLib",
+          "scope": 6898
+        },
+        "children": [
+          {
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "AddressArrayLib",
+                  "referencedDeclaration": 6897,
+                  "type": "library AddressArrayLib"
+                },
+                "id": 6742,
+                "name": "UserDefinedTypeName",
+                "src": "131:15:24"
+              },
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "addresses",
+                  "referencedDeclaration": 6748,
+                  "type": "struct AddressArrayLib.addresses"
+                },
+                "id": 6743,
+                "name": "UserDefinedTypeName",
+                "src": "151:9:24"
+              }
+            ],
+            "id": 6744,
+            "name": "UsingForDirective",
+            "src": "125:36:24"
+          },
+          {
+            "attributes": {
+              "canonicalName": "AddressArrayLib.addresses",
+              "name": "addresses",
+              "scope": 6897,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "array",
+                  "scope": 6748,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address[]",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "length": null,
+                      "type": "address[]"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 6745,
+                        "name": "ElementaryTypeName",
+                        "src": "194:7:24"
+                      }
+                    ],
+                    "id": 6746,
+                    "name": "ArrayTypeName",
+                    "src": "194:9:24"
+                  }
+                ],
+                "id": 6747,
+                "name": "VariableDeclaration",
+                "src": "194:15:24"
+              }
+            ],
+            "id": 6748,
+            "name": "StructDefinition",
+            "src": "167:49:24"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "add",
+              "scope": 6897,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "self",
+                      "scope": 6771,
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "type": "struct AddressArrayLib.addresses",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "addresses",
+                          "referencedDeclaration": 6748,
+                          "type": "struct AddressArrayLib.addresses"
+                        },
+                        "id": 6749,
+                        "name": "UserDefinedTypeName",
+                        "src": "235:9:24"
+                      }
+                    ],
+                    "id": 6750,
+                    "name": "VariableDeclaration",
+                    "src": "235:22:24"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_address",
+                      "scope": 6771,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 6751,
+                        "name": "ElementaryTypeName",
+                        "src": "259:7:24"
+                      }
+                    ],
+                    "id": 6752,
+                    "name": "VariableDeclaration",
+                    "src": "259:16:24"
+                  }
+                ],
+                "id": 6753,
+                "name": "ParameterList",
+                "src": "234:42:24"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 6754,
+                "name": "ParameterList",
+                "src": "298:0:24"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "falseBody": null
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "!",
+                          "prefix": true,
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "bool",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_struct$_addresses_$6748_storage_ptr",
+                                      "typeString": "struct AddressArrayLib.addresses storage pointer"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 6896,
+                                  "type": "function (struct AddressArrayLib.addresses storage pointer,address) view returns (bool)",
+                                  "value": "exists"
+                                },
+                                "id": 6755,
+                                "name": "Identifier",
+                                "src": "313:6:24"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 6750,
+                                  "type": "struct AddressArrayLib.addresses storage pointer",
+                                  "value": "self"
+                                },
+                                "id": 6756,
+                                "name": "Identifier",
+                                "src": "320:4:24"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 6752,
+                                  "type": "address",
+                                  "value": "_address"
+                                },
+                                "id": 6757,
+                                "name": "Identifier",
+                                "src": "326:8:24"
+                              }
+                            ],
+                            "id": 6758,
+                            "name": "FunctionCall",
+                            "src": "313:22:24"
+                          }
+                        ],
+                        "id": 6759,
+                        "name": "UnaryOperation",
+                        "src": "311:24:24"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "type": "uint256",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "push",
+                                      "referencedDeclaration": null,
+                                      "type": "function (address) returns (uint256)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": true,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "member_name": "array",
+                                          "referencedDeclaration": 6747,
+                                          "type": "address[] storage ref"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 6750,
+                                              "type": "struct AddressArrayLib.addresses storage pointer",
+                                              "value": "self"
+                                            },
+                                            "id": 6760,
+                                            "name": "Identifier",
+                                            "src": "350:4:24"
+                                          }
+                                        ],
+                                        "id": 6763,
+                                        "name": "MemberAccess",
+                                        "src": "350:10:24"
+                                      }
+                                    ],
+                                    "id": 6764,
+                                    "name": "MemberAccess",
+                                    "src": "350:15:24"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 6752,
+                                      "type": "address",
+                                      "value": "_address"
+                                    },
+                                    "id": 6765,
+                                    "name": "Identifier",
+                                    "src": "366:8:24"
+                                  }
+                                ],
+                                "id": 6766,
+                                "name": "FunctionCall",
+                                "src": "350:25:24"
+                              }
+                            ],
+                            "id": 6767,
+                            "name": "ExpressionStatement",
+                            "src": "350:25:24"
+                          }
+                        ],
+                        "id": 6768,
+                        "name": "Block",
+                        "src": "336:50:24"
+                      }
+                    ],
+                    "id": 6769,
+                    "name": "IfStatement",
+                    "src": "308:78:24"
+                  }
+                ],
+                "id": 6770,
+                "name": "Block",
+                "src": "298:94:24"
+              }
+            ],
+            "id": 6771,
+            "name": "FunctionDefinition",
+            "src": "222:170:24"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getIndexByAddress",
+              "scope": 6897,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "self",
+                      "scope": 6824,
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "type": "struct AddressArrayLib.addresses",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "addresses",
+                          "referencedDeclaration": 6748,
+                          "type": "struct AddressArrayLib.addresses"
+                        },
+                        "id": 6772,
+                        "name": "UserDefinedTypeName",
+                        "src": "434:9:24"
+                      }
+                    ],
+                    "id": 6773,
+                    "name": "VariableDeclaration",
+                    "src": "434:22:24"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_address",
+                      "scope": 6824,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 6774,
+                        "name": "ElementaryTypeName",
+                        "src": "466:7:24"
+                      }
+                    ],
+                    "id": 6775,
+                    "name": "VariableDeclaration",
+                    "src": "466:16:24"
+                  }
+                ],
+                "id": 6776,
+                "name": "ParameterList",
+                "src": "424:64:24"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 6824,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 6777,
+                        "name": "ElementaryTypeName",
+                        "src": "512:7:24"
+                      }
+                    ],
+                    "id": 6778,
+                    "name": "VariableDeclaration",
+                    "src": "512:7:24"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 6824,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 6779,
+                        "name": "ElementaryTypeName",
+                        "src": "521:4:24"
+                      }
+                    ],
+                    "id": 6780,
+                    "name": "VariableDeclaration",
+                    "src": "521:4:24"
+                  }
+                ],
+                "id": 6781,
+                "name": "ParameterList",
+                "src": "511:15:24"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        6783
+                      ],
+                      "initialValue": null
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "index",
+                          "scope": 6823,
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "type": "uint256",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "uint256",
+                              "type": "uint256"
+                            },
+                            "id": 6782,
+                            "name": "ElementaryTypeName",
+                            "src": "537:7:24"
+                          }
+                        ],
+                        "id": 6783,
+                        "name": "VariableDeclaration",
+                        "src": "537:13:24"
+                      }
+                    ],
+                    "id": 6784,
+                    "name": "VariableDeclarationStatement",
+                    "src": "537:13:24"
+                  },
+                  {
+                    "attributes": {
+                      "assignments": [
+                        6786
+                      ],
+                      "initialValue": null
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "exists_",
+                          "scope": 6823,
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "type": "bool",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "bool",
+                              "type": "bool"
+                            },
+                            "id": 6785,
+                            "name": "ElementaryTypeName",
+                            "src": "560:4:24"
+                          }
+                        ],
+                        "id": 6786,
+                        "name": "VariableDeclaration",
+                        "src": "560:12:24"
+                      }
+                    ],
+                    "id": 6787,
+                    "name": "VariableDeclarationStatement",
+                    "src": "560:12:24"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "assignments": [
+                            6789
+                          ]
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "constant": false,
+                              "name": "i",
+                              "scope": 6818,
+                              "stateVariable": false,
+                              "storageLocation": "default",
+                              "type": "uint256",
+                              "value": null,
+                              "visibility": "internal"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "name": "uint256",
+                                  "type": "uint256"
+                                },
+                                "id": 6788,
+                                "name": "ElementaryTypeName",
+                                "src": "588:7:24"
+                              }
+                            ],
+                            "id": 6789,
+                            "name": "VariableDeclaration",
+                            "src": "588:9:24"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "30",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 0",
+                              "value": "0"
+                            },
+                            "id": 6790,
+                            "name": "Literal",
+                            "src": "600:1:24"
+                          }
+                        ],
+                        "id": 6791,
+                        "name": "VariableDeclarationStatement",
+                        "src": "588:13:24"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "<",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6789,
+                              "type": "uint256",
+                              "value": "i"
+                            },
+                            "id": 6792,
+                            "name": "Identifier",
+                            "src": "603:1:24"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "length",
+                              "referencedDeclaration": null,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "array",
+                                  "referencedDeclaration": 6747,
+                                  "type": "address[] storage ref"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 6773,
+                                      "type": "struct AddressArrayLib.addresses storage pointer",
+                                      "value": "self"
+                                    },
+                                    "id": 6793,
+                                    "name": "Identifier",
+                                    "src": "607:4:24"
+                                  }
+                                ],
+                                "id": 6794,
+                                "name": "MemberAccess",
+                                "src": "607:10:24"
+                              }
+                            ],
+                            "id": 6795,
+                            "name": "MemberAccess",
+                            "src": "607:17:24"
+                          }
+                        ],
+                        "id": 6796,
+                        "name": "BinaryOperation",
+                        "src": "603:21:24"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "++",
+                              "prefix": false,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 6789,
+                                  "type": "uint256",
+                                  "value": "i"
+                                },
+                                "id": 6797,
+                                "name": "Identifier",
+                                "src": "626:1:24"
+                              }
+                            ],
+                            "id": 6798,
+                            "name": "UnaryOperation",
+                            "src": "626:3:24"
+                          }
+                        ],
+                        "id": 6799,
+                        "name": "ExpressionStatement",
+                        "src": "626:3:24"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "falseBody": null
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "commonType": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "==",
+                                  "type": "bool"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": true,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "type": "address"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": true,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "member_name": "array",
+                                          "referencedDeclaration": 6747,
+                                          "type": "address[] storage ref"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 6773,
+                                              "type": "struct AddressArrayLib.addresses storage pointer",
+                                              "value": "self"
+                                            },
+                                            "id": 6800,
+                                            "name": "Identifier",
+                                            "src": "649:4:24"
+                                          }
+                                        ],
+                                        "id": 6801,
+                                        "name": "MemberAccess",
+                                        "src": "649:10:24"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 6789,
+                                          "type": "uint256",
+                                          "value": "i"
+                                        },
+                                        "id": 6802,
+                                        "name": "Identifier",
+                                        "src": "660:1:24"
+                                      }
+                                    ],
+                                    "id": 6803,
+                                    "name": "IndexAccess",
+                                    "src": "649:13:24"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 6775,
+                                      "type": "address",
+                                      "value": "_address"
+                                    },
+                                    "id": 6804,
+                                    "name": "Identifier",
+                                    "src": "666:8:24"
+                                  }
+                                ],
+                                "id": 6805,
+                                "name": "BinaryOperation",
+                                "src": "649:25:24"
+                              },
+                              {
+                                "children": [
+                                  {
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "operator": "=",
+                                          "type": "uint256"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 6783,
+                                              "type": "uint256",
+                                              "value": "index"
+                                            },
+                                            "id": 6806,
+                                            "name": "Identifier",
+                                            "src": "694:5:24"
+                                          },
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 6789,
+                                              "type": "uint256",
+                                              "value": "i"
+                                            },
+                                            "id": 6807,
+                                            "name": "Identifier",
+                                            "src": "702:1:24"
+                                          }
+                                        ],
+                                        "id": 6808,
+                                        "name": "Assignment",
+                                        "src": "694:9:24"
+                                      }
+                                    ],
+                                    "id": 6809,
+                                    "name": "ExpressionStatement",
+                                    "src": "694:9:24"
+                                  },
+                                  {
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "operator": "=",
+                                          "type": "bool"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 6786,
+                                              "type": "bool",
+                                              "value": "exists_"
+                                            },
+                                            "id": 6810,
+                                            "name": "Identifier",
+                                            "src": "721:7:24"
+                                          },
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "hexvalue": "74727565",
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": true,
+                                              "lValueRequested": false,
+                                              "subdenomination": null,
+                                              "token": "bool",
+                                              "type": "bool",
+                                              "value": "true"
+                                            },
+                                            "id": 6811,
+                                            "name": "Literal",
+                                            "src": "731:4:24"
+                                          }
+                                        ],
+                                        "id": 6812,
+                                        "name": "Assignment",
+                                        "src": "721:14:24"
+                                      }
+                                    ],
+                                    "id": 6813,
+                                    "name": "ExpressionStatement",
+                                    "src": "721:14:24"
+                                  },
+                                  {
+                                    "id": 6814,
+                                    "name": "Break",
+                                    "src": "754:5:24"
+                                  }
+                                ],
+                                "id": 6815,
+                                "name": "Block",
+                                "src": "676:98:24"
+                              }
+                            ],
+                            "id": 6816,
+                            "name": "IfStatement",
+                            "src": "645:129:24"
+                          }
+                        ],
+                        "id": 6817,
+                        "name": "Block",
+                        "src": "631:153:24"
+                      }
+                    ],
+                    "id": 6818,
+                    "name": "ForStatement",
+                    "src": "583:201:24"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 6781
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isInlineArray": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "tuple(uint256,bool)"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6783,
+                              "type": "uint256",
+                              "value": "index"
+                            },
+                            "id": 6819,
+                            "name": "Identifier",
+                            "src": "801:5:24"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6786,
+                              "type": "bool",
+                              "value": "exists_"
+                            },
+                            "id": 6820,
+                            "name": "Identifier",
+                            "src": "808:7:24"
+                          }
+                        ],
+                        "id": 6821,
+                        "name": "TupleExpression",
+                        "src": "800:16:24"
+                      }
+                    ],
+                    "id": 6822,
+                    "name": "Return",
+                    "src": "793:23:24"
+                  }
+                ],
+                "id": 6823,
+                "name": "Block",
+                "src": "527:296:24"
+              }
+            ],
+            "id": 6824,
+            "name": "FunctionDefinition",
+            "src": "398:425:24"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "removeAddress",
+              "scope": 6897,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "self",
+                      "scope": 6860,
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "type": "struct AddressArrayLib.addresses",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "addresses",
+                          "referencedDeclaration": 6748,
+                          "type": "struct AddressArrayLib.addresses"
+                        },
+                        "id": 6825,
+                        "name": "UserDefinedTypeName",
+                        "src": "861:9:24"
+                      }
+                    ],
+                    "id": 6826,
+                    "name": "VariableDeclaration",
+                    "src": "861:22:24"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_address",
+                      "scope": 6860,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 6827,
+                        "name": "ElementaryTypeName",
+                        "src": "893:7:24"
+                      }
+                    ],
+                    "id": 6828,
+                    "name": "VariableDeclaration",
+                    "src": "893:16:24"
+                  }
+                ],
+                "id": 6829,
+                "name": "ParameterList",
+                "src": "851:64:24"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 6830,
+                "name": "ParameterList",
+                "src": "925:0:24"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "assignments": [
+                            6832
+                          ]
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "constant": false,
+                              "name": "i",
+                              "scope": 6858,
+                              "stateVariable": false,
+                              "storageLocation": "default",
+                              "type": "uint256",
+                              "value": null,
+                              "visibility": "internal"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "name": "uint256",
+                                  "type": "uint256"
+                                },
+                                "id": 6831,
+                                "name": "ElementaryTypeName",
+                                "src": "939:7:24"
+                              }
+                            ],
+                            "id": 6832,
+                            "name": "VariableDeclaration",
+                            "src": "939:9:24"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "30",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 0",
+                              "value": "0"
+                            },
+                            "id": 6833,
+                            "name": "Literal",
+                            "src": "951:1:24"
+                          }
+                        ],
+                        "id": 6834,
+                        "name": "VariableDeclarationStatement",
+                        "src": "939:13:24"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "<",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6832,
+                              "type": "uint256",
+                              "value": "i"
+                            },
+                            "id": 6835,
+                            "name": "Identifier",
+                            "src": "954:1:24"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "length",
+                              "referencedDeclaration": null,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "array",
+                                  "referencedDeclaration": 6747,
+                                  "type": "address[] storage ref"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 6826,
+                                      "type": "struct AddressArrayLib.addresses storage pointer",
+                                      "value": "self"
+                                    },
+                                    "id": 6836,
+                                    "name": "Identifier",
+                                    "src": "958:4:24"
+                                  }
+                                ],
+                                "id": 6837,
+                                "name": "MemberAccess",
+                                "src": "958:10:24"
+                              }
+                            ],
+                            "id": 6838,
+                            "name": "MemberAccess",
+                            "src": "958:17:24"
+                          }
+                        ],
+                        "id": 6839,
+                        "name": "BinaryOperation",
+                        "src": "954:21:24"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "++",
+                              "prefix": false,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 6832,
+                                  "type": "uint256",
+                                  "value": "i"
+                                },
+                                "id": 6840,
+                                "name": "Identifier",
+                                "src": "977:1:24"
+                              }
+                            ],
+                            "id": 6841,
+                            "name": "UnaryOperation",
+                            "src": "977:3:24"
+                          }
+                        ],
+                        "id": 6842,
+                        "name": "ExpressionStatement",
+                        "src": "977:3:24"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "falseBody": null
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "commonType": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "==",
+                                  "type": "bool"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": true,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "type": "address"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": true,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "member_name": "array",
+                                          "referencedDeclaration": 6747,
+                                          "type": "address[] storage ref"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 6826,
+                                              "type": "struct AddressArrayLib.addresses storage pointer",
+                                              "value": "self"
+                                            },
+                                            "id": 6843,
+                                            "name": "Identifier",
+                                            "src": "1017:4:24"
+                                          }
+                                        ],
+                                        "id": 6844,
+                                        "name": "MemberAccess",
+                                        "src": "1017:10:24"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 6832,
+                                          "type": "uint256",
+                                          "value": "i"
+                                        },
+                                        "id": 6845,
+                                        "name": "Identifier",
+                                        "src": "1028:1:24"
+                                      }
+                                    ],
+                                    "id": 6846,
+                                    "name": "IndexAccess",
+                                    "src": "1017:13:24"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 6828,
+                                      "type": "address",
+                                      "value": "_address"
+                                    },
+                                    "id": 6847,
+                                    "name": "Identifier",
+                                    "src": "1034:8:24"
+                                  }
+                                ],
+                                "id": 6848,
+                                "name": "BinaryOperation",
+                                "src": "1017:25:24"
+                              },
+                              {
+                                "children": [
+                                  {
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "operator": "delete",
+                                          "prefix": true,
+                                          "type": "tuple()"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "isConstant": false,
+                                              "isLValue": true,
+                                              "isPure": false,
+                                              "lValueRequested": true,
+                                              "type": "address"
+                                            },
+                                            "children": [
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": null,
+                                                  "isConstant": false,
+                                                  "isLValue": true,
+                                                  "isPure": false,
+                                                  "lValueRequested": false,
+                                                  "member_name": "array",
+                                                  "referencedDeclaration": 6747,
+                                                  "type": "address[] storage ref"
+                                                },
+                                                "children": [
+                                                  {
+                                                    "attributes": {
+                                                      "argumentTypes": null,
+                                                      "overloadedDeclarations": [
+                                                        null
+                                                      ],
+                                                      "referencedDeclaration": 6826,
+                                                      "type": "struct AddressArrayLib.addresses storage pointer",
+                                                      "value": "self"
+                                                    },
+                                                    "id": 6849,
+                                                    "name": "Identifier",
+                                                    "src": "1083:4:24"
+                                                  }
+                                                ],
+                                                "id": 6850,
+                                                "name": "MemberAccess",
+                                                "src": "1083:10:24"
+                                              },
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": null,
+                                                  "overloadedDeclarations": [
+                                                    null
+                                                  ],
+                                                  "referencedDeclaration": 6832,
+                                                  "type": "uint256",
+                                                  "value": "i"
+                                                },
+                                                "id": 6851,
+                                                "name": "Identifier",
+                                                "src": "1094:1:24"
+                                              }
+                                            ],
+                                            "id": 6852,
+                                            "name": "IndexAccess",
+                                            "src": "1083:13:24"
+                                          }
+                                        ],
+                                        "id": 6853,
+                                        "name": "UnaryOperation",
+                                        "src": "1076:20:24"
+                                      }
+                                    ],
+                                    "id": 6854,
+                                    "name": "ExpressionStatement",
+                                    "src": "1076:20:24"
+                                  }
+                                ],
+                                "id": 6855,
+                                "name": "Block",
+                                "src": "1058:53:24"
+                              }
+                            ],
+                            "id": 6856,
+                            "name": "IfStatement",
+                            "src": "996:115:24"
+                          }
+                        ],
+                        "id": 6857,
+                        "name": "Block",
+                        "src": "982:139:24"
+                      }
+                    ],
+                    "id": 6858,
+                    "name": "ForStatement",
+                    "src": "934:187:24"
+                  }
+                ],
+                "id": 6859,
+                "name": "Block",
+                "src": "925:202:24"
+              }
+            ],
+            "id": 6860,
+            "name": "FunctionDefinition",
+            "src": "829:298:24"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "exists",
+              "scope": 6897,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "self",
+                      "scope": 6896,
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "type": "struct AddressArrayLib.addresses",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "addresses",
+                          "referencedDeclaration": 6748,
+                          "type": "struct AddressArrayLib.addresses"
+                        },
+                        "id": 6861,
+                        "name": "UserDefinedTypeName",
+                        "src": "1159:9:24"
+                      }
+                    ],
+                    "id": 6862,
+                    "name": "VariableDeclaration",
+                    "src": "1159:22:24"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_address",
+                      "scope": 6896,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 6863,
+                        "name": "ElementaryTypeName",
+                        "src": "1191:7:24"
+                      }
+                    ],
+                    "id": 6864,
+                    "name": "VariableDeclaration",
+                    "src": "1191:16:24"
+                  }
+                ],
+                "id": 6865,
+                "name": "ParameterList",
+                "src": "1149:64:24"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 6896,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 6866,
+                        "name": "ElementaryTypeName",
+                        "src": "1237:4:24"
+                      }
+                    ],
+                    "id": 6867,
+                    "name": "VariableDeclaration",
+                    "src": "1237:4:24"
+                  }
+                ],
+                "id": 6868,
+                "name": "ParameterList",
+                "src": "1236:6:24"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "assignments": [
+                            6870
+                          ]
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "constant": false,
+                              "name": "i",
+                              "scope": 6892,
+                              "stateVariable": false,
+                              "storageLocation": "default",
+                              "type": "uint256",
+                              "value": null,
+                              "visibility": "internal"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "name": "uint256",
+                                  "type": "uint256"
+                                },
+                                "id": 6869,
+                                "name": "ElementaryTypeName",
+                                "src": "1258:7:24"
+                              }
+                            ],
+                            "id": 6870,
+                            "name": "VariableDeclaration",
+                            "src": "1258:9:24"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "30",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 0",
+                              "value": "0"
+                            },
+                            "id": 6871,
+                            "name": "Literal",
+                            "src": "1270:1:24"
+                          }
+                        ],
+                        "id": 6872,
+                        "name": "VariableDeclarationStatement",
+                        "src": "1258:13:24"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "<",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6870,
+                              "type": "uint256",
+                              "value": "i"
+                            },
+                            "id": 6873,
+                            "name": "Identifier",
+                            "src": "1273:1:24"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "length",
+                              "referencedDeclaration": null,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "array",
+                                  "referencedDeclaration": 6747,
+                                  "type": "address[] storage ref"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 6862,
+                                      "type": "struct AddressArrayLib.addresses storage pointer",
+                                      "value": "self"
+                                    },
+                                    "id": 6874,
+                                    "name": "Identifier",
+                                    "src": "1277:4:24"
+                                  }
+                                ],
+                                "id": 6875,
+                                "name": "MemberAccess",
+                                "src": "1277:10:24"
+                              }
+                            ],
+                            "id": 6876,
+                            "name": "MemberAccess",
+                            "src": "1277:17:24"
+                          }
+                        ],
+                        "id": 6877,
+                        "name": "BinaryOperation",
+                        "src": "1273:21:24"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "++",
+                              "prefix": false,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 6870,
+                                  "type": "uint256",
+                                  "value": "i"
+                                },
+                                "id": 6878,
+                                "name": "Identifier",
+                                "src": "1296:1:24"
+                              }
+                            ],
+                            "id": 6879,
+                            "name": "UnaryOperation",
+                            "src": "1296:3:24"
+                          }
+                        ],
+                        "id": 6880,
+                        "name": "ExpressionStatement",
+                        "src": "1296:3:24"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "falseBody": null
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "commonType": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "==",
+                                  "type": "bool"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": true,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "type": "address"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": true,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "member_name": "array",
+                                          "referencedDeclaration": 6747,
+                                          "type": "address[] storage ref"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 6862,
+                                              "type": "struct AddressArrayLib.addresses storage pointer",
+                                              "value": "self"
+                                            },
+                                            "id": 6881,
+                                            "name": "Identifier",
+                                            "src": "1336:4:24"
+                                          }
+                                        ],
+                                        "id": 6882,
+                                        "name": "MemberAccess",
+                                        "src": "1336:10:24"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 6870,
+                                          "type": "uint256",
+                                          "value": "i"
+                                        },
+                                        "id": 6883,
+                                        "name": "Identifier",
+                                        "src": "1347:1:24"
+                                      }
+                                    ],
+                                    "id": 6884,
+                                    "name": "IndexAccess",
+                                    "src": "1336:13:24"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 6864,
+                                      "type": "address",
+                                      "value": "_address"
+                                    },
+                                    "id": 6885,
+                                    "name": "Identifier",
+                                    "src": "1353:8:24"
+                                  }
+                                ],
+                                "id": 6886,
+                                "name": "BinaryOperation",
+                                "src": "1336:25:24"
+                              },
+                              {
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "functionReturnParameters": 6868
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "hexvalue": "74727565",
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "subdenomination": null,
+                                          "token": "bool",
+                                          "type": "bool",
+                                          "value": "true"
+                                        },
+                                        "id": 6887,
+                                        "name": "Literal",
+                                        "src": "1402:4:24"
+                                      }
+                                    ],
+                                    "id": 6888,
+                                    "name": "Return",
+                                    "src": "1395:11:24"
+                                  }
+                                ],
+                                "id": 6889,
+                                "name": "Block",
+                                "src": "1377:44:24"
+                              }
+                            ],
+                            "id": 6890,
+                            "name": "IfStatement",
+                            "src": "1315:106:24"
+                          }
+                        ],
+                        "id": 6891,
+                        "name": "Block",
+                        "src": "1301:130:24"
+                      }
+                    ],
+                    "id": 6892,
+                    "name": "ForStatement",
+                    "src": "1253:178:24"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 6868
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "hexvalue": "66616c7365",
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "subdenomination": null,
+                          "token": "bool",
+                          "type": "bool",
+                          "value": "false"
+                        },
+                        "id": 6893,
+                        "name": "Literal",
+                        "src": "1447:5:24"
+                      }
+                    ],
+                    "id": 6894,
+                    "name": "Return",
+                    "src": "1440:12:24"
+                  }
+                ],
+                "id": 6895,
+                "name": "Block",
+                "src": "1243:216:24"
+              }
+            ],
+            "id": 6896,
+            "name": "FunctionDefinition",
+            "src": "1134:325:24"
+          }
+        ],
+        "id": 6897,
+        "name": "ContractDefinition",
+        "src": "95:1366:24"
+      }
+    ],
+    "id": 6898,
+    "name": "SourceUnit",
+    "src": "39:1422:24"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-11-01T10:56:16.726Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

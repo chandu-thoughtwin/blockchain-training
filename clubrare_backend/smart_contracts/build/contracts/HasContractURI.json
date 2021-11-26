@@ -1,0 +1,949 @@
+{
+  "contractName": "HasContractURI",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_contractURI",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "contractURI",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_contractURI\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":true,\"inputs\":[],\"name\":\"contractURI\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"supportsInterface(bytes4)\":{\"details\":\"See {IERC165-supportsInterface}.     * Time complexity O(1), guaranteed to always use less than 30 000 gas.\"}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/utils/HasContractURI.sol\":\"HasContractURI\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/introspection/ERC165.sol\":{\"keccak256\":\"0x01aedbf24e121a744262e04c7815b2a4c8ce604dee4829c5cff00943a594ccf3\",\"urls\":[\"bzz-raw://999ab32a6498d8ad8db61d47c3774aae2ff919acceebe2aeb50879bef62642c3\",\"dweb:/ipfs/QmephAYF5hoymu9qCFK6mURM2kZJCxU4ntUb4KTf1miVPT\"]},\"@openzeppelin/contracts/introspection/IERC165.sol\":{\"keccak256\":\"0xe0ed10f53955c35eecb02724538650a155aa940be3f0a54cd3bde6c6b0c6e48c\",\"urls\":[\"bzz-raw://7dcfda88e3225987245908c3296f3559752647036804325ebfaa9fd1545161c3\",\"dweb:/ipfs/QmXxx5rHfLL57zdgyyyG9MMv4XGN7bpVSc2MuDcaCgto6u\"]},\"project:/contracts/utils/HasContractURI.sol\":{\"keccak256\":\"0x89885b7badddddeb9fd970c0a90eb00a17a75d13ade2ab807700990444d3f538\",\"urls\":[\"bzz-raw://81907a6172e7344f233cbd4228427ba281c28fd5b69373058c2305a24c2f3f43\",\"dweb:/ipfs/QmRo5n3awaAVgry33GZvXMoM1MTAJTyqq7QwF9butmA8Bt\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506040516104333803806104338339818101604052602081101561003357600080fd5b810190808051604051939291908464010000000082111561005357600080fd5b90830190602082018581111561006857600080fd5b825164010000000081118282018810171561008257600080fd5b82525081516020918201929091019080838360005b838110156100af578181015183820152602001610097565b50505050905090810190601f1680156100dc5780820380516001836020036101000a031916815260200191505b50604052506100fe91506301ffc9a760e01b90506001600160e01b0361013116565b80516101119060019060208401906101b5565b5061012b63e8a3d48560e01b6001600160e01b0361013116565b50610250565b6001600160e01b03198082161415610190576040805162461bcd60e51b815260206004820152601c60248201527f4552433136353a20696e76616c696420696e7465726661636520696400000000604482015290519081900360640190fd5b6001600160e01b0319166000908152602081905260409020805460ff19166001179055565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106101f657805160ff1916838001178555610223565b82800160010185558215610223579182015b82811115610223578251825591602001919060010190610208565b5061022f929150610233565b5090565b61024d91905b8082111561022f5760008155600101610239565b90565b6101d48061025f6000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c806301ffc9a71461003b578063e8a3d48514610076575b600080fd5b6100626004803603602081101561005157600080fd5b50356001600160e01b0319166100f3565b604080519115158252519081900360200190f35b61007e610112565b6040805160208082528351818301528351919283929083019185019080838360005b838110156100b85781810151838201526020016100a0565b50505050905090810190601f1680156100e55780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6001600160e01b03191660009081526020819052604090205460ff1690565b60018054604080516020600284861615610100026000190190941693909304601f810184900484028201840190925281815292918301828280156101975780601f1061016c57610100808354040283529160200191610197565b820191906000526020600020905b81548152906001019060200180831161017a57829003601f168201915b50505050508156fea265627a7a72315820d9ce0506cc0480bde7ed9bad53232b17c4bb6085d34f0bd45768dac89edf07c164736f6c63430005110032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c806301ffc9a71461003b578063e8a3d48514610076575b600080fd5b6100626004803603602081101561005157600080fd5b50356001600160e01b0319166100f3565b604080519115158252519081900360200190f35b61007e610112565b6040805160208082528351818301528351919283929083019185019080838360005b838110156100b85781810151838201526020016100a0565b50505050905090810190601f1680156100e55780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6001600160e01b03191660009081526020819052604090205460ff1690565b60018054604080516020600284861615610100026000190190941693909304601f810184900484028201840190925281815292918301828280156101975780601f1061016c57610100808354040283529160200191610197565b820191906000526020600020905b81548152906001019060200180831161017a57829003601f168201915b50505050508156fea265627a7a72315820d9ce0506cc0480bde7ed9bad53232b17c4bb6085d34f0bd45768dac89edf07c164736f6c63430005110032",
+  "sourceMap": "85:598:31:-;;;299:146;8:9:-1;5:2;;;30:1;27;20:12;5:2;299:146:31;;;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;299:146:31;;;;;;;;;;;;;19:11:-1;14:3;11:20;8:2;;;44:1;41;34:12;8:2;62:21;;;;123:4;114:14;;138:31;;;135:2;;;182:1;179;172:12;135:2;213:10;;261:11;244:29;;285:43;;;282:58;-1:-1;233:115;230:2;;;361:1;358;351:12;230:2;372:25;;-1:-1;299:146:31;;420:4:-1;411:14;;;;299:146:31;;;;;411:14:-1;299:146:31;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;299:146:31;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;299:146:31;;-1:-1:-1;718:40:2;;-1:-1:-1;;;;737:20:2;-1:-1:-1;;;;;;718:18:2;:40;:::i;:::-;356:26:31;;;;:11;;:26;;;;;:::i;:::-;-1:-1:-1;392:46:31;-1:-1:-1;;;;;;;;392:18:31;:46;:::i;:::-;299:146;85:598;;1442:190:2;-1:-1:-1;;;;;;1517:25:2;;;;;1509:66;;;;;-1:-1:-1;;;1509:66:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;1585:33:2;:20;:33;;;;;;;;;;:40;;-1:-1:-1;;1585:40:2;1621:4;1585:40;;;1442:190::o;85:598:31:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;85:598:31;;;-1:-1:-1;85:598:31;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
+  "deployedSourceMap": "85:598:31:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;85:598:31;;;;;;;;;;;;;;;;;;;;;;;;915:133:2;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;915:133:2;-1:-1:-1;;;;;;915:133:2;;:::i;:::-;;;;;;;;;;;;;;;;;;126:25:31;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:100:-1;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;126:25:31;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;915:133:2;-1:-1:-1;;;;;;1008:33:2;985:4;1008:33;;;;;;;;;;;;;;915:133::o;126:25:31:-;;;;;;;;;;;;;;;-1:-1:-1;;126:25:31;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.5.0;\n\nimport \"@openzeppelin/contracts/introspection/ERC165.sol\";\n\ncontract HasContractURI is ERC165 {\n\n    string public contractURI;\n\n    /*\n     * bytes4(keccak256('contractURI()')) == 0xe8a3d485\n     */\n    bytes4 private constant _INTERFACE_ID_CONTRACT_URI = 0xe8a3d485;\n\n    constructor(string memory _contractURI) public {\n        contractURI = _contractURI;\n        _registerInterface(_INTERFACE_ID_CONTRACT_URI);\n    }\n\n    /**\n     * @dev Internal function to set the contract URI\n     * @param _contractURI string URI prefix to assign\n     */\n    function _setContractURI(string memory _contractURI) internal {\n        contractURI = _contractURI;\n    }\n}\n",
+  "sourcePath": "/Users/thoughtwin/Desktop/weblisto/clubrare/smart_contracts/contracts/utils/HasContractURI.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/utils/HasContractURI.sol",
+    "exportedSymbols": {
+      "HasContractURI": [
+        8080
+      ]
+    },
+    "id": 8081,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8047,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:31"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts/introspection/ERC165.sol",
+        "file": "@openzeppelin/contracts/introspection/ERC165.sol",
+        "id": 8048,
+        "nodeType": "ImportDirective",
+        "scope": 8081,
+        "sourceUnit": 128,
+        "src": "25:58:31",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 8049,
+              "name": "ERC165",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 127,
+              "src": "112:6:31",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ERC165_$127",
+                "typeString": "contract ERC165"
+              }
+            },
+            "id": 8050,
+            "nodeType": "InheritanceSpecifier",
+            "src": "112:6:31"
+          }
+        ],
+        "contractDependencies": [
+          127,
+          137
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 8080,
+        "linearizedBaseContracts": [
+          8080,
+          127,
+          137
+        ],
+        "name": "HasContractURI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 8052,
+            "name": "contractURI",
+            "nodeType": "VariableDeclaration",
+            "scope": 8080,
+            "src": "126:25:31",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_storage",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 8051,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "126:6:31",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 8055,
+            "name": "_INTERFACE_ID_CONTRACT_URI",
+            "nodeType": "VariableDeclaration",
+            "scope": 8080,
+            "src": "229:63:31",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes4",
+              "typeString": "bytes4"
+            },
+            "typeName": {
+              "id": 8053,
+              "name": "bytes4",
+              "nodeType": "ElementaryTypeName",
+              "src": "229:6:31",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes4",
+                "typeString": "bytes4"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "30786538613364343835",
+              "id": 8054,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "282:10:31",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_3903050885_by_1",
+                "typeString": "int_const 3903050885"
+              },
+              "value": "0xe8a3d485"
+            },
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 8068,
+              "nodeType": "Block",
+              "src": "346:99:31",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 8062,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 8060,
+                      "name": "contractURI",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 8052,
+                      "src": "356:11:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 8061,
+                      "name": "_contractURI",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 8057,
+                      "src": "370:12:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "356:26:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 8063,
+                  "nodeType": "ExpressionStatement",
+                  "src": "356:26:31"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 8065,
+                        "name": "_INTERFACE_ID_CONTRACT_URI",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 8055,
+                        "src": "411:26:31",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes4",
+                          "typeString": "bytes4"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes4",
+                          "typeString": "bytes4"
+                        }
+                      ],
+                      "id": 8064,
+                      "name": "_registerInterface",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 126,
+                      "src": "392:18:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_bytes4_$returns$__$",
+                        "typeString": "function (bytes4)"
+                      }
+                    },
+                    "id": 8066,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "392:46:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 8067,
+                  "nodeType": "ExpressionStatement",
+                  "src": "392:46:31"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 8069,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8058,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8057,
+                  "name": "_contractURI",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8069,
+                  "src": "311:26:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 8056,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "311:6:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "310:28:31"
+            },
+            "returnParameters": {
+              "id": 8059,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "346:0:31"
+            },
+            "scope": 8080,
+            "src": "299:146:31",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 8078,
+              "nodeType": "Block",
+              "src": "638:43:31",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 8076,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 8074,
+                      "name": "contractURI",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 8052,
+                      "src": "648:11:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 8075,
+                      "name": "_contractURI",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 8071,
+                      "src": "662:12:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "648:26:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 8077,
+                  "nodeType": "ExpressionStatement",
+                  "src": "648:26:31"
+                }
+              ]
+            },
+            "documentation": "@dev Internal function to set the contract URI\n@param _contractURI string URI prefix to assign",
+            "id": 8079,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_setContractURI",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8072,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8071,
+                  "name": "_contractURI",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8079,
+                  "src": "601:26:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 8070,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "601:6:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "600:28:31"
+            },
+            "returnParameters": {
+              "id": 8073,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "638:0:31"
+            },
+            "scope": 8080,
+            "src": "576:105:31",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 8081,
+        "src": "85:598:31"
+      }
+    ],
+    "src": "0:684:31"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/utils/HasContractURI.sol",
+      "exportedSymbols": {
+        "HasContractURI": [
+          8080
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.5",
+            ".0"
+          ]
+        },
+        "id": 8047,
+        "name": "PragmaDirective",
+        "src": "0:23:31"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 128,
+          "absolutePath": "@openzeppelin/contracts/introspection/ERC165.sol",
+          "file": "@openzeppelin/contracts/introspection/ERC165.sol",
+          "scope": 8081,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 8048,
+        "name": "ImportDirective",
+        "src": "25:58:31"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            127,
+            137
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            8080,
+            127,
+            137
+          ],
+          "name": "HasContractURI",
+          "scope": 8081
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "ERC165",
+                  "referencedDeclaration": 127,
+                  "type": "contract ERC165"
+                },
+                "id": 8049,
+                "name": "UserDefinedTypeName",
+                "src": "112:6:31"
+              }
+            ],
+            "id": 8050,
+            "name": "InheritanceSpecifier",
+            "src": "112:6:31"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "contractURI",
+              "scope": 8080,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "string",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "string",
+                  "type": "string"
+                },
+                "id": 8051,
+                "name": "ElementaryTypeName",
+                "src": "126:6:31"
+              }
+            ],
+            "id": 8052,
+            "name": "VariableDeclaration",
+            "src": "126:25:31"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "name": "_INTERFACE_ID_CONTRACT_URI",
+              "scope": 8080,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "bytes4",
+              "visibility": "private"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "bytes4",
+                  "type": "bytes4"
+                },
+                "id": 8053,
+                "name": "ElementaryTypeName",
+                "src": "229:6:31"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "30786538613364343835",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 3903050885",
+                  "value": "0xe8a3d485"
+                },
+                "id": 8054,
+                "name": "Literal",
+                "src": "282:10:31"
+              }
+            ],
+            "id": 8055,
+            "name": "VariableDeclaration",
+            "src": "229:63:31"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "modifiers": [
+                null
+              ],
+              "name": "",
+              "scope": 8080,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_contractURI",
+                      "scope": 8069,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 8056,
+                        "name": "ElementaryTypeName",
+                        "src": "311:6:31"
+                      }
+                    ],
+                    "id": 8057,
+                    "name": "VariableDeclaration",
+                    "src": "311:26:31"
+                  }
+                ],
+                "id": 8058,
+                "name": "ParameterList",
+                "src": "310:28:31"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8059,
+                "name": "ParameterList",
+                "src": "346:0:31"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "string storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 8052,
+                              "type": "string storage ref",
+                              "value": "contractURI"
+                            },
+                            "id": 8060,
+                            "name": "Identifier",
+                            "src": "356:11:31"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 8057,
+                              "type": "string memory",
+                              "value": "_contractURI"
+                            },
+                            "id": 8061,
+                            "name": "Identifier",
+                            "src": "370:12:31"
+                          }
+                        ],
+                        "id": 8062,
+                        "name": "Assignment",
+                        "src": "356:26:31"
+                      }
+                    ],
+                    "id": 8063,
+                    "name": "ExpressionStatement",
+                    "src": "356:26:31"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bytes4",
+                                  "typeString": "bytes4"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 126,
+                              "type": "function (bytes4)",
+                              "value": "_registerInterface"
+                            },
+                            "id": 8064,
+                            "name": "Identifier",
+                            "src": "392:18:31"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 8055,
+                              "type": "bytes4",
+                              "value": "_INTERFACE_ID_CONTRACT_URI"
+                            },
+                            "id": 8065,
+                            "name": "Identifier",
+                            "src": "411:26:31"
+                          }
+                        ],
+                        "id": 8066,
+                        "name": "FunctionCall",
+                        "src": "392:46:31"
+                      }
+                    ],
+                    "id": 8067,
+                    "name": "ExpressionStatement",
+                    "src": "392:46:31"
+                  }
+                ],
+                "id": 8068,
+                "name": "Block",
+                "src": "346:99:31"
+              }
+            ],
+            "id": 8069,
+            "name": "FunctionDefinition",
+            "src": "299:146:31"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev Internal function to set the contract URI\n@param _contractURI string URI prefix to assign",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_setContractURI",
+              "scope": 8080,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_contractURI",
+                      "scope": 8079,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 8070,
+                        "name": "ElementaryTypeName",
+                        "src": "601:6:31"
+                      }
+                    ],
+                    "id": 8071,
+                    "name": "VariableDeclaration",
+                    "src": "601:26:31"
+                  }
+                ],
+                "id": 8072,
+                "name": "ParameterList",
+                "src": "600:28:31"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8073,
+                "name": "ParameterList",
+                "src": "638:0:31"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "string storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 8052,
+                              "type": "string storage ref",
+                              "value": "contractURI"
+                            },
+                            "id": 8074,
+                            "name": "Identifier",
+                            "src": "648:11:31"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 8071,
+                              "type": "string memory",
+                              "value": "_contractURI"
+                            },
+                            "id": 8075,
+                            "name": "Identifier",
+                            "src": "662:12:31"
+                          }
+                        ],
+                        "id": 8076,
+                        "name": "Assignment",
+                        "src": "648:26:31"
+                      }
+                    ],
+                    "id": 8077,
+                    "name": "ExpressionStatement",
+                    "src": "648:26:31"
+                  }
+                ],
+                "id": 8078,
+                "name": "Block",
+                "src": "638:43:31"
+              }
+            ],
+            "id": 8079,
+            "name": "FunctionDefinition",
+            "src": "576:105:31"
+          }
+        ],
+        "id": 8080,
+        "name": "ContractDefinition",
+        "src": "85:598:31"
+      }
+    ],
+    "id": 8081,
+    "name": "SourceUnit",
+    "src": "0:684:31"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-11-01T10:56:16.739Z",
+  "devdoc": {
+    "methods": {
+      "supportsInterface(bytes4)": {
+        "details": "See {IERC165-supportsInterface}.     * Time complexity O(1), guaranteed to always use less than 30 000 gas."
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
